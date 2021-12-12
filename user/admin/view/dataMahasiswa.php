@@ -7,9 +7,104 @@
     </div>
     <!-- End Page Heading -->
 
-    <!-- tombol tambah data barang -->
-    <button type="button" class="btn btn-primary mb-2">Tambah Data Mahasiswa</button>
-    <!-- akhir tombol data barang -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#ModalTambah">
+        Tambah Data
+    </button>
+
+    <!-- Modal Tambah -->
+    <div class="modal fade" id="ModalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" name="nim" id="floatingInput" autofocus
+                                    required>
+                                <label for="floatingInput">NIM</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" name="nama" id="floatingInput" required>
+                                <label for="floatingInput">Nama</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" name="kelas" id="floatingPassword" maxlength="2"
+                                    required>
+                                <label for="floatingPassword">Kelas</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" name="prodi" id="floatingPassword" required>
+                                <label for="floatingPassword">Prodi</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" name="jurusan" id="floatingPassword" required>
+                        <label for="floatingPassword">Jurusan</label>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <select class="form-select mb-3" aria-label="Default select example" id="dosbing"
+                                name="dosbing" value="Dosen Pembimbing" required>
+                                <option>Dosen Pembimbing</option>
+                                <option value="">Belum ada data</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select mb-3" aria-label="Default select example" id="jk" name="jk"
+                                value="Jenis Kelamin" required>
+                                <option>Jenis Kelamin</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-select mb-3" aria-label="Default select example" id="status"
+                                name="status" value="Status" required>
+                                <option>Status</option>
+                                <option value="Ada">Ada</option>
+                                <option value="Hilang">Hilang</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" name="alamat" id="floatingPassword" required>
+                        <label for="floatingPassword">Alamat</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="date" class="form-control" name="tanggal_lahir" id="floatingPassword">
+                        <label for="floatingPassword">Tanggal Lahir</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" name="tempat_lahir" id="floatingPassword">
+                        <label for="floatingPassword">Tempat Lahir</label>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input type="file" class="form-control" id="inputGroupFile02" name="gambar">
+                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal Tambah -->
 
     <!-- sort -->
     <div class="btn-group dropend">
@@ -72,184 +167,204 @@
                                 <td>Ada</td>
                                 <td>
                                     <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary mr-2">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-secondary mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalEdit">
                                             <i class="fas fa-user-edit"></i>
                                         </button>
-                                        <button type="button" class="btn btn-primary mr-2">
+
+                                        <!-- Modal Tambah -->
+                                        <div class="modal fade" id="ModalEdit" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <input type="hidden" name="nim" value="">
+                                                        <div class="form-floating mb-2">
+                                                            <input type="text" class="form-control" name="nama"
+                                                                id="floatingInput" required>
+                                                            <label for="floatingInput">Nama</label>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" name="kelas"
+                                                                        id="floatingPassword" maxlength="2" required>
+                                                                    <label for="floatingPassword">Kelas</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" name="prodi"
+                                                                        id="floatingPassword" required>
+                                                                    <label for="floatingPassword">Prodi</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-floating mb-2">
+                                                            <input type="text" class="form-control" name="jurusan"
+                                                                id="floatingPassword" required>
+                                                            <label for="floatingPassword">Jurusan</label>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <select class="form-select mb-3"
+                                                                    aria-label="Default select example" id="dosbing"
+                                                                    name="dosbing" value="Dosen Pembimbing" required>
+                                                                    <option>Dosen Pembimbing</option>
+                                                                    <option value="">Belum ada data</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col">
+                                                                <select class="form-select mb-3"
+                                                                    aria-label="Default select example" id="jk"
+                                                                    name="jk" value="Jenis Kelamin" required>
+                                                                    <option>Jenis Kelamin</option>
+                                                                    <option value="Laki-Laki">Laki-Laki</option>
+                                                                    <option value="Perempuan">Perempuan</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col">
+                                                                <select class="form-select mb-3"
+                                                                    aria-label="Default select example" id="status"
+                                                                    name="status" value="Status" required>
+                                                                    <option>Status</option>
+                                                                    <option value="Ada">Ada</option>
+                                                                    <option value="Hilang">Hilang</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-floating mb-2">
+                                                            <input type="text" class="form-control" name="alamat"
+                                                                id="floatingPassword" required>
+                                                            <label for="floatingPassword">Alamat</label>
+                                                        </div>
+                                                        <div class="form-floating mb-2">
+                                                            <input type="date" class="form-control" name="tanggal_lahir"
+                                                                id="floatingPassword">
+                                                            <label for="floatingPassword">Tanggal Lahir</label>
+                                                        </div>
+                                                        <div class="form-floating mb-2">
+                                                            <input type="text" class="form-control" name="tempat_lahir"
+                                                                id="floatingPassword">
+                                                            <label for="floatingPassword">Tempat Lahir</label>
+                                                        </div>
+                                                        <div class="input-group mb-2">
+                                                            <input type="file" class="form-control"
+                                                                id="inputGroupFile02" name="gambar">
+                                                            <label class="input-group-text"
+                                                                for="inputGroupFile02">Upload</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Edit -->
+
+                                        <!-- Button trigger modal detail -->
+                                        <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalDetail">
                                             <i class="fas fa-info"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger mr-2">
+
+                                        <!-- Modal Detail -->
+                                        <div class="modal fade" id="ModalDetail" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Sebuah Modal Detail yang datanya belum ada
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Detail -->
+
+                                        <!-- Button trigger modal hapus -->
+                                        <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalHapus">
                                             <i class="fas fa-user-slash"></i>
                                         </button>
-                                        <button type="button" class="btn btn-success mr-2">
+
+                                        <!-- Modal Hapus -->
+                                        <div class="modal fade" id="ModalHapus" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Tekan Hapus untuk menghapus data ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Hapus -->
+
+                                        <!-- Button trigger modal TA KRS Buku Akademik -->
+                                        <button type="button" class="btn btn-success mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalMemikir">
                                             TA
                                         </button>
-                                        <button type="button" class="btn btn-success mr-2">
+                                        <button type="button" class="btn btn-success mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalMemikir">
                                             KRS
                                         </button>
-                                        <button type="button" class="btn btn-success">
+                                        <button type="button" class="btn btn-success mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalMemikir">
                                             Buku Akademik
                                         </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>Laki</td>
-                                <td>Eve</td>
-                                <td>Ada</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary mr-2">
-                                            <i class="fas fa-user-edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            <i class="fas fa-user-slash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            TA
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            KRS
-                                        </button>
-                                        <button type="button" class="btn btn-success">
-                                            Buku Akademik
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>Laki</td>
-                                <td>Eve</td>
-                                <td>Ada</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary mr-2">
-                                            <i class="fas fa-user-edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            <i class="fas fa-user-slash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            TA
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            KRS
-                                        </button>
-                                        <button type="button" class="btn btn-success">
-                                            Buku Akademik
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>Laki</td>
-                                <td>Eve</td>
-                                <td>Ada</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary mr-2">
-                                            <i class="fas fa-user-edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            <i class="fas fa-user-slash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            TA
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            KRS
-                                        </button>
-                                        <button type="button" class="btn btn-success">
-                                            Buku Akademik
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>Laki</td>
-                                <td>Eve</td>
-                                <td>Ada</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary mr-2">
-                                            <i class="fas fa-user-edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            <i class="fas fa-user-slash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            TA
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            KRS
-                                        </button>
-                                        <button type="button" class="btn btn-success">
-                                            Buku Akademik
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>Laki</td>
-                                <td>Eve</td>
-                                <td>Ada</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary mr-2">
-                                            <i class="fas fa-user-edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            <i class="fas fa-user-slash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            TA
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            KRS
-                                        </button>
-                                        <button type="button" class="btn btn-success">
-                                            Buku Akademik
-                                        </button>
+
+                                        <!-- Modal TA KRS Buku Akademik-->
+                                        <div class="modal fade" id="ModalMemikir" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Memikir</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Masih Mikir mau buat gimana, rencana mungkin buat halaman baru
+                                                        untuk tampilin TA, KRS sama Buku Akademik
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal TA KRS Buku Akademik -->
                                     </div>
                                 </td>
                             </tr>

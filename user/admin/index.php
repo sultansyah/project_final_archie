@@ -84,6 +84,8 @@ if (empty($_GET['view'])) {
                     require "view/profile.php";
                 } elseif ($view == 'set') {
                     require "view/setting.php";
+                } else {
+                    require "view/404.php";
                 }
 
                 ?>

@@ -67,78 +67,92 @@
                                 <td>Diterima</td>
                                 <td>
                                     <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
+                                        <!-- Button trigger modal detail -->
+                                        <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalDetail">
                                             <i class="fas fa-info"></i>
                                         </button>
-                                        <button type="button" class="btn btn-success mr-2">
+
+                                        <!-- Modal Detail -->
+                                        <div class="modal fade" id="ModalDetail" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Sebuah Modal Detail yang datanya belum ada
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Detail -->
+
+                                        <!-- Button trigger modal ACC -->
+                                        <button type="button" class="btn btn-success mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalACC">
                                             ACC
                                         </button>
-                                        <button type="button" class="btn btn-danger mr-2">
+
+                                        <!-- Modal ACC -->
+                                        <div class="modal fade" id="ModalACC" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">ACC</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Tekan ACC untuk mengACC judul TA mahasiswa
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">ACC</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal ACC -->
+
+                                        <!-- Button trigger modal Tolak -->
+                                        <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalTolak">
                                             Tolak
                                         </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Blabla</td>
-                                <td>12-12-1212</td>
-                                <td>12-12-1212</td>
-                                <td>Ditolak</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            ACC
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            Tolak
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Blabla</td>
-                                <td>12-12-1212</td>
-                                <td>12-12-1212</td>
-                                <td>Diterima</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            ACC
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            Tolak
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Blabla</td>
-                                <td>12-12-1212</td>
-                                <td>12-12-1212</td>
-                                <td>Ditolak</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-success mr-2">
-                                            ACC
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            Tolak
-                                        </button>
+
+                                        <!-- Modal Tolak -->
+                                        <div class="modal fade" id="ModalTolak" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Tolak</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Tekan Tolak untuk menolak judul TA mahasiswa
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Tolak</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Tolak -->
+
                                     </div>
                                 </td>
                             </tr>

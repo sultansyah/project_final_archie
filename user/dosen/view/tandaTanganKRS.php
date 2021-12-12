@@ -70,112 +70,64 @@
                                 <td>Sudah</td>
                                 <td>
                                     <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
+                                        <!-- Button trigger modal detail -->
+                                        <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalDetail">
                                             <i class="fas fa-info"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            ACC
+
+                                        <!-- Modal Detail -->
+                                        <div class="modal fade" id="ModalDetail" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Sebuah Modal Detail yang datanya belum ada
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Detail -->
+
+                                        <!-- Button trigger modal Tanda Tangan -->
+                                        <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
+                                            data-bs-target="#ModalTTD">
+                                            Tanda Tangan
                                         </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>2A</td>
-                                <td>Laki</td>
-                                <td>Sudah</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            ACC
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>2A</td>
-                                <td>Laki</td>
-                                <td>Sudah</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            ACC
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>2A</td>
-                                <td>Laki</td>
-                                <td>Sudah</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            ACC
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>2A</td>
-                                <td>Laki</td>
-                                <td>Sudah</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            ACC
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>2A</td>
-                                <td>Laki</td>
-                                <td>Sudah</td>
-                                <td>
-                                    <div class="btn-group" role="" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary mr-2">
-                                            <i class="fas fa-info"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger mr-2">
-                                            ACC
-                                        </button>
+
+                                        <!-- Modal Tanda Tangan -->
+                                        <div class="modal fade" id="ModalTTD" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Tekan Tanda Tangan untuk menandatangani KRS mahasiswa
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Tanda
+                                                            Tangan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Tanda Tangan -->
+
                                     </div>
                                 </td>
                             </tr>

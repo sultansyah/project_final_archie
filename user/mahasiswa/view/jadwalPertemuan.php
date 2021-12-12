@@ -7,17 +7,18 @@
     </div>
     <!-- End Page Heading -->
 
-    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#ModalTambahPertemuan">
-        Tambah Pertemuan
+    <!-- Button trigger modal ajukan judul TA -->
+    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#ModalAjukanPertemuan">
+        Ajukan Pertemuan
     </button>
 
-    <!-- Modal Ajukan Pertemuan -->
-    <div class="modal fade" id="ModalTambahPertemuan" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <!-- Modal Ajukan PErtemuan -->
+    <div class="modal fade" id="ModalAjukanPertemuan" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Pertemuan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ajukan Pertemuan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="">
@@ -32,7 +33,6 @@
                             <option>Kategori</option>
                             <option value="admin">Bimbingan</option>
                             <option value="dosen">Konsultasi</option>
-                            <option value="lainnya">Lainnya</option>
                         </select>
                         <div class="row">
                             <div class="col">
@@ -51,15 +51,15 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-primary">Ajukan</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Akhir Modal Tambah Pertemuan -->
+    <!-- Akhir Modal Ajukan Pertemuan -->
 
-    <!-- kategori -->
+    <!-- sort -->
     <div class="btn-group dropend">
         <button type="button" class="btn btn-secondary dropdown-toggle mb-2" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,12 +68,9 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="#">Bimbingan</a></li>
             <li><a class="dropdown-item" href="#">Konsultasi</a></li>
-            <li><a class="dropdown-item" href="#">Lainnya</a></li>
-            <li><a class="dropdown-item" href="#">Ditolak</a></li>
-            <li><a class="dropdown-item" href="#">Diterima</a></li>
         </ul>
     </div>
-    <!-- end kategori -->
+    <!-- end sort -->
 
     <!-- search -->
     <form class="d-none d-sm-inline-block form-inline mr-auto
@@ -102,10 +99,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Kategori</th>
-                                <th scope="col">Nama Mahasiswa</th>
-                                <th scope="col">Jurusan</th>
-                                <th scope="col">Prodi</th>
-                                <th scope="col">Tanggal Dibuat</th>
+                                <th scope="col">Tanggal Diajukan</th>
                                 <th scope="col">Tanggal Pertemuan</th>
                                 <th scope="col">Jam</th>
                                 <th scope="col">Status</th>
@@ -116,76 +110,14 @@
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Bimbingan</td>
-                                <td>Mark</td>
-                                <td>TIK</td>
-                                <td>TI</td>
                                 <td>10-02-2321</td>
                                 <td>11-03-2315</td>
                                 <td>10</td>
                                 <td>Disetujui</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <!-- Button trigger modal ACC -->
-                                        <button type="button" class="btn btn-secondary mr-2" data-bs-toggle="modal"
-                                            data-bs-target="#ModalACC">
-                                            ACC
-                                        </button>
-
-                                        <!-- Modal ACC -->
-                                        <div class="modal fade" id="ModalACC" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Tekan ACC untuk menerima ajuan pertemuan
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-danger">ACC</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Akhir Modal ACC -->
-
-                                        <!-- Button trigger modal tolak -->
-                                        <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
-                                            data-bs-target="#ModalTolak">
-                                            Tolak
-                                        </button>
-
-                                        <!-- Modal Link-->
-                                        <div class="modal fade" id="ModalTolak" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Tolak Pertemuan
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Tekan Tolak untuk menolak ajuan pertemuan
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-danger">Tolak</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Akhir Modal Tolak -->
-
                                         <!-- Button trigger modal edit pertemuan-->
-                                        <button type="button" class="btn btn-success mr-2" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal"
                                             data-bs-target="#ModalEditPertemuan">
                                             Edit
                                         </button>
@@ -215,7 +147,6 @@
                                                                 <option>Kategori</option>
                                                                 <option value="admin">Bimbingan</option>
                                                                 <option value="dosen">Konsultasi</option>
-                                                                <option value="lainnya">Lainnya</option>
                                                             </select>
                                                             <div class="row">
                                                                 <div class="col">
@@ -247,7 +178,7 @@
                                         <!-- Akhir Modal Edit Pertemuan -->
 
                                         <!-- Button trigger modal link -->
-                                        <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#ModalLink">
                                             Link
                                         </button>

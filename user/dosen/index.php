@@ -90,6 +90,8 @@ if (empty($_GET['view'])) {
                     require "view/profile.php";
                 } elseif ($view == 'revisi') {
                     require "view/revisi.php";
+                } else {
+                    require "view/404.php";
                 }
 
                 ?>

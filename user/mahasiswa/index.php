@@ -3,7 +3,7 @@ require "proses/cekLevel.php";
 require "../session.php";
 
 if (empty($_GET['view'])) {
-    $_GET['view'] = 'home';
+    $_GET['view'] = 'hm';
 }
 ?>
 
@@ -29,6 +29,7 @@ if (empty($_GET['view'])) {
 
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -71,16 +72,22 @@ if (empty($_GET['view'])) {
 
                 if ($view == 'hm') {
                     require "view/home.php";
-                } elseif ($view == 'idu') {
-                    require "view/inputDataUser.php";
-                } elseif ($view == 'da') {
-                    require "view/dataAdmin.php";
-                } elseif ($view == 'dd') {
-                    require "view/dataDosen.php";
-                } elseif ($view == 'dm') {
-                    require "view/dataMahasiswa.php";
-                } elseif ($view == 'djp') {
-                    require "view/dataJadwalPertemuan.php";
+                } elseif ($view == 'krs') {
+                    require "view/krs.php";
+                } elseif ($view == 'bk') {
+                    require "view/bukuAkademik.php";
+                } elseif ($view == 'ta') {
+                    require "view/tugasAKhir.php";
+                } elseif ($view == 'jp') {
+                    require "view/jadwalPertemuan.php";
+                } elseif ($view == 'prof') {
+                    require "view/profile.php";
+                } elseif ($view == 'set') {
+                    require "view/setting.php";
+                } elseif ($view == 'iba') {
+                    require "view/isiBukuAkademik.php";
+                } else {
+                    require "view/404.php";
                 }
 
                 ?>
@@ -90,13 +97,7 @@ if (empty($_GET['view'])) {
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Sistem Bimbingan Dosen Secara Online</span>
-                    </div>
-                </div>
-            </footer>
+
             <!-- End of Footer -->
 
         </div>
@@ -117,11 +118,10 @@ if (empty($_GET['view'])) {
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are
-                    ready to end your current session.</div>
+                <div class="modal-body">Tekan Logout untuk keluar dari website</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../logout.php">Logout</a>
+                    <a class="btn btn-danger" href="../logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -137,13 +137,7 @@ if (empty($_GET['view'])) {
 
     <!-- Custom scripts for all pages-->
     <script src="../../js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../../vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../../js/demo/chart-area-demo.js"></script>
-    <script src="../../js/demo/chart-pie-demo.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
 
 </body>
 

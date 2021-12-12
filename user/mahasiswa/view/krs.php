@@ -3,7 +3,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center
                             justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800" style="font-weight: bold;">Data Mahasiswa Bimbingan</h1>
+        <h1 class="h3 mb-0 text-gray-800" style="font-weight: bold;">KRS</h1>
     </div>
     <!-- End Page Heading -->
 
@@ -11,11 +11,11 @@
     <div class="btn-group dropend">
         <button type="button" class="btn btn-secondary dropdown-toggle mb-2" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            Sort
+            Filter
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Sort A to Z</a></li>
-            <li><a class="dropdown-item" href="#">Sort Z to A</a></li>
+            <li><a class="dropdown-item" href="#">Diterima</a></li>
+            <li><a class="dropdown-item" href="#">Menunggu</a></li>
         </ul>
     </div>
     <!-- end sort -->
@@ -46,12 +46,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Semester</th>
-                                <th scope="col">Jurusan</th>
-                                <th scope="col">Prodi</th>
+                                <th scope="col">Tahun Akademik</th>
                                 <th scope="col">Kelas</th>
-                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">IP Semester Lalu</th>
+                                <th scope="col">IP Komulatif</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -59,25 +57,23 @@
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2</td>
-                                <td>TIK</td>
-                                <td>TI</td>
-                                <td>2A</td>
-                                <td>Laki</td>
-                                <td>Ada</td>
+                                <td>2020/2021 Ganjil</td>
+                                <td>1A</td>
+                                <td>3.43</td>
+                                <td>3.42</td>
+                                <td>Sudah Ditanda Tangan</td>
                                 <td>
                                     <div class="btn-group" role="" aria-label="Basic example">
-                                        <!-- Button trigger modal detail -->
+                                        <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal"
                                             data-bs-target="#ModalDetail">
                                             <i class="fas fa-info"></i>
                                         </button>
 
-                                        <!-- Modal Detail -->
+                                        <!-- Modal Minta Detail-->
                                         <div class="modal fade" id="ModalDetail" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
+                                            <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
@@ -85,7 +81,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Sebuah Modal Detail yang datanya belum ada
+                                                        Sebuah Modal
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
@@ -96,35 +92,40 @@
                                         </div>
                                         <!-- Akhir Modal Detail -->
 
-                                        <!-- Button trigger modal hapus -->
-                                        <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
-                                            data-bs-target="#ModalHapus">
-                                            <i class="fas fa-user-slash"></i>
+                                        <button type="button" class="btn btn-success mr-2">
+                                            <i class="fas fa-print"></i>
                                         </button>
 
-                                        <!-- Modal Hapus -->
-                                        <div class="modal fade" id="ModalHapus" tabindex="-1"
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#ModalMinta">
+                                            Minta Tanda Tangan
+                                        </button>
+
+                                        <!-- Modal Minta Tanda Tangan-->
+                                        <div class="modal fade" id="ModalMinta" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Minta Tanda
+                                                            Tangan
+                                                        </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Tekan Hapus untuk menghapus data ...
+                                                        Tekan Minta untuk menyuruh dosen menandatangani
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        <button type="submit" class="btn btn-danger">Minta</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Akhir Modal Hapus -->
-
+                                        <!-- Akhir Modal Minta Tanda Tangan -->
                                     </div>
                                 </td>
                             </tr>

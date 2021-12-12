@@ -12,7 +12,7 @@
 
     <!-- Nav Item - Home -->
     <li class="nav-item active">
-        <a class="nav-link" href="?view=hm">
+        <a class="nav-link" href="hm">
             <i class="fas fa-home"></i>
             <span>Home</span></a>
     </li>
@@ -21,41 +21,33 @@
     <hr class="sidebar-divider">
     <!-- akhir garis horizontal -->
 
-    <!-- Nav Item - Input Data User -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="?view=idu">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Input Data User</span>
-        </a>
-    </li>
-
     <!-- Nav Item - Data Admin -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="?view=da">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Data Admin</span>
+        <a class="nav-link collapsed" href="krs">
+            <i class="fas fa-fw fa-user-cog"></i>
+            <span>KRS</span>
         </a>
     </li>
 
     <!-- Nav Item - Data Dosen -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="?view=dd">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Data Dosen</span>
+        <a class="nav-link collapsed" href="bk">
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
+            <span>Buku Akademik</span>
         </a>
     </li>
 
     <!-- Nav Item - Data Mahasiswa -->
     <li class="nav-item">
-        <a class="nav-link" href="?view=dm">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Data Mahasiswa</span></a>
+        <a class="nav-link" href="ta">
+            <i class="fas fa-fw fa-user-graduate"></i>
+            <span>Tugas Akhir</span></a>
     </li>
 
     <!-- Nav Item - Jadwal Pertemuan -->
     <li class="nav-item">
-        <a class="nav-link" href="?view=djp">
-            <i class="fas fa-fw fa-table"></i>
+        <a class="nav-link" href="jp">
+            <i class="fas fa-fw fa-calendar-alt"></i>
             <span>Jadwal Pertemuan</span></a>
     </li>
 
