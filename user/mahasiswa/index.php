@@ -77,7 +77,7 @@ if (empty($_GET['view'])) {
                 } elseif ($view == 'bk') {
                     require "view/bukuAkademik.php";
                 } elseif ($view == 'ta') {
-                    require "view/tugasAKhir.php";
+                    require "view/tugasAkhir.php";
                 } elseif ($view == 'jp') {
                     require "view/jadwalPertemuan.php";
                 } elseif ($view == 'prof') {
