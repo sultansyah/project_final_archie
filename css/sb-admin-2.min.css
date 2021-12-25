@@ -66,11 +66,11 @@ section {
 }
 body {
   margin: 0;
-  font-family: -apple-system, "Apple Color Emoji", Nunito, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Segoe UI Emoji",
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.5;
   color: #858796;
   text-align: left;
@@ -1442,17 +1442,17 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #000000;
+  color: #858796;
 }
 .table td,
 .table th {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #8d8080;
+  border-top: 1px solid #e3e6f0;
 }
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #e3e6f0;
 }
 .table tbody + tbody {
   border-top: 2px solid #e3e6f0;
@@ -2235,18 +2235,18 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 .btn-primary {
-  color: rgb(255, 255, 255);
-  background-color: #2e59d9;
-  border-color: #ffffff;
+  color: #fff;
+  background-color: #4e73df;
+  border-color: #4e73df;
 }
 .btn-primary:hover {
-  color: rgb(0, 0, 0);
+  color: #fff;
   background-color: #2e59d9;
   border-color: #2653d4;
 }
 .btn-primary.focus,
 .btn-primary:focus {
-  color: rgb(0, 0, 0);
+  color: #fff;
   background-color: #2e59d9;
   border-color: #2653d4;
   box-shadow: 0 0 0 0.2rem rgba(105, 136, 228, 0.5);
@@ -9017,7 +9017,7 @@ a:focus {
   display: flex;
 }
 #wrapper #content-wrapper {
-  background-color: #ffffff;
+  background-color: #f8f9fc;
   width: 100%;
   overflow-x: hidden;
 }
@@ -9111,7 +9111,8 @@ a:focus {
   animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
 }
 .bg-gradient-primary {
-  background-color: #ffffff;
+  background-color: #4e73df;
+  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
   background-size: cover;
 }
 .bg-gradient-secondary {
@@ -9461,9 +9462,7 @@ a:focus {
   width: 6.5rem;
 }
 .sidebar .nav-item .nav-link span {
-  font-family: "Nunito";
-  font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   display: block;
 }
 .sidebar .nav-item.active .nav-link {
@@ -9577,8 +9576,8 @@ a:focus {
 .sidebar .sidebar-heading {
   text-align: center;
   padding: 0 1rem;
-  font-weight: 700;
-  font-size: 11px;
+  font-weight: 800;
+  font-size: 0.65rem;
 }
 .sidebar .sidebar-card {
   display: flex;
@@ -9771,35 +9770,35 @@ a:focus {
   color: #fff;
 }
 .sidebar-dark hr.sidebar-divider {
-  border-top: 1px solid rgb(0 0 0);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 .sidebar-dark .sidebar-heading {
-  color: rgb(42 47 197);
+  color: rgba(255, 255, 255, 0.4);
 }
 .sidebar-dark .nav-item .nav-link {
-  color: black;
+  color: rgba(255, 255, 255, 0.8);
 }
 .sidebar-dark .nav-item .nav-link i {
-  color: rgb(0 0 0);
+  color: rgba(255, 255, 255, 0.3);
 }
 .sidebar-dark .nav-item .nav-link:active,
 .sidebar-dark .nav-item .nav-link:focus,
 .sidebar-dark .nav-item .nav-link:hover {
-  color: #3b5cff;
+  color: #fff;
 }
 .sidebar-dark .nav-item .nav-link:active i,
 .sidebar-dark .nav-item .nav-link:focus i,
 .sidebar-dark .nav-item .nav-link:hover i {
-  color: #3b5cff;
+  color: #fff;
 }
 .sidebar-dark .nav-item .nav-link[data-toggle="collapse"]::after {
   color: rgba(255, 255, 255, 0.5);
 }
 .sidebar-dark .nav-item.active .nav-link {
-  color: #000;
+  color: #fff;
 }
 .sidebar-dark .nav-item.active .nav-link i {
-  color: #000;
+  color: #fff;
 }
 .sidebar-dark #sidebarToggle {
   background-color: rgba(255, 255, 255, 0.2);
