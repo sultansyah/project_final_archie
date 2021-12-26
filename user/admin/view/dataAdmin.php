@@ -38,16 +38,16 @@
                         <div class="row">
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="jk"
-                                    name="tempat_kerja" value="Tempat Bekerja">
-                                    <option>Tempat Bekerja</option>
+                                    name="tempat_kerja">
+                                    <option value="">Tempat Bekerja</option>
                                     <option value="Jurusan">Jurusan</option>
                                     <option value="ADM">ADM</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="jk"
-                                    name="jenis_kelamin" value="Jenis Kelamin">
-                                    <option>Jenis Kelamin</option>
+                                    name="jenis_kelamin">
+                                    <option value="">Jenis Kelamin</option>
                                     <option value="Laki-Laki">Laki-Laki</option>
                                     <option value="Perempuan">Perempuan</option>
                                 </select>
@@ -90,6 +90,7 @@
                                     <th>No</th>
                                     <th>Gambar</th>
                                     <th>Nama</th>
+                                    <th>Kode Admin</th>
                                     <th>Tempat Kerja</th>
                                     <th>Jenis Kelamin</th>
                                     <th>No HP</th>
@@ -100,15 +101,18 @@
                             <tbody>
                                 <?php
                                 $select_admin = mysqli_query($conn, "SELECT * FROM tb_admin");
+                                $no = 0;
                                 while ($hasil_admin = mysqli_fetch_array($select_admin)) {
+                                    $no++;
                                 ?>
                                 <tr>
-                                    <th scope="row"><?= $hasil_admin['id_admin'] ?></th>
+                                    <th scope="row"><?= $no ?></th>
                                     <td>
                                         <img src="<?= "../images/admin/" . $hasil_admin['gambar_admin']; ?>" width="100"
                                             height="100" class="card-img-top" alt="...">
                                     </td>
                                     <td><?= $hasil_admin['nama_admin'] ?></td>
+                                    <td><?= $hasil_admin['kode_admin'] ?></td>
                                     <td><?= $hasil_admin['tempat_kerja'] ?></td>
                                     <td><?= $hasil_admin['jenis_kelamin'] ?></td>
                                     <td><?= $hasil_admin['no_hp'] ?></td>

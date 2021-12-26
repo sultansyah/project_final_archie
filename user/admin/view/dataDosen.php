@@ -39,8 +39,8 @@
                         <div class="row">
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="jurusan"
-                                    name="jurusan" value="">
-                                    <option>Jurusan</option>
+                                    name="jurusan">
+                                    <option value="">Jurusan</option>
                                     <option value="Teknologi Informasi Dan Komputer">Teknologi Informasi Dan Komputer
                                     </option>
                                     <option value="Kimia">Kimia</option>
@@ -48,8 +48,8 @@
                             </div>
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="prodi"
-                                    name="prodi" value="">
-                                    <option>Prodi</option>
+                                    name="prodi">
+                                    <option value="">Prodi</option>
                                     <option value="Teknik Informatika">Teknik Informatika</option>
                                     <option value="Statistika">Statistika</option>
                                 </select>
@@ -58,8 +58,8 @@
                         <div class="row">
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="jk"
-                                    name="jenis_kelamin" value="Jenis Kelamin">
-                                    <option>Jenis Kelamin</option>
+                                    name="jenis_kelamin">
+                                    <option value="">Jenis Kelamin</option>
                                     <option value="Laki-Laki">Laki-Laki</option>
                                     <option value="Perempuan">Perempuan</option>
                                 </select>
@@ -103,6 +103,7 @@
                                     <th>No</th>
                                     <th>Gambar</th>
                                     <th>Nama</th>
+                                    <th>Nip</th>
                                     <th>Jurusan</th>
                                     <th>Prodi</th>
                                     <th>Jenis Kelamin</th>
@@ -114,15 +115,18 @@
                             <tbody>
                                 <?php
                                 $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen");
+                                $no = 0;
                                 while ($hasil_dosen = mysqli_fetch_array($select_dosen)) {
+                                    $no++;
                                 ?>
                                 <tr>
-                                    <th scope="row"><?= $hasil_dosen['id_dosen'] ?></th>
+                                    <th scope="row"><?= $no ?></th>
                                     <td>
-                                        <img src="<?= "../images/admin/" . $hasil_dosen['gambar_dosen']; ?>" width="100"
+                                        <img src="<?= "../images/dosen/" . $hasil_dosen['gambar_dosen']; ?>" width="100"
                                             height="100" class="card-img-top" alt="...">
                                     </td>
                                     <td><?= $hasil_dosen['nama_dosen'] ?></td>
+                                    <td><?= $hasil_dosen['nip'] ?></td>
                                     <td><?= $hasil_dosen['jurusan'] ?></td>
                                     <td><?= $hasil_dosen['prodi'] ?></td>
                                     <td><?= $hasil_dosen['jenis_kelamin'] ?></td>
@@ -150,7 +154,7 @@
                                                             enctype="multipart/form-data">
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="id_dosen"
-                                                                    value="<?= $hasil_admon['id_dosen'] ?>">
+                                                                    value="<?= $hasil_dosen['id_dosen'] ?>">
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="form-floating mb-2">
@@ -171,12 +175,12 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col">
-                                                                        <select class="form-select mb-3" aria-la
-                                                                            bel="Default select example" id="jurusan"
-                                                                            name="jurusan"
-                                                                            value="<?= $hasil_dosen['jurusan'] ?>">
-                                                                            <option>
-                                                                                value="<?= $hasil_dosen['jurusan'] ?>"
+                                                                        <select class="form-select mb-3"
+                                                                            aria-label="Default select example"
+                                                                            id="jurusan" name="jurusan">
+                                                                            <option
+                                                                                value="<?= $hasil_dosen['jurusan'] ?>">
+                                                                                <?= $hasil_dosen['jurusan'] ?>
                                                                             </option>
                                                                             <option
                                                                                 value="Teknologi Informasi Dan Komputer">
@@ -188,9 +192,10 @@
                                                                     <div class="col">
                                                                         <select class="form-select mb-3"
                                                                             aria-label="Default select example"
-                                                                            id="prodi" name="prodi"
-                                                                            value="<?= $hasil_admon['prodi'] ?>">
-                                                                            <option>value="<?= $hasil_admon['prodi'] ?>"
+                                                                            id="prodi" name="prodi">
+                                                                            <option
+                                                                                value="<?= $hasil_dosen['prodi'] ?>">
+                                                                                <?= $hasil_dosen['prodi'] ?>
                                                                             </option>
                                                                             <option value="Teknik Informatika">Teknik
                                                                                 Informatika</option>
@@ -203,10 +208,10 @@
                                                                     <div class="col">
                                                                         <select class="form-select mb-3"
                                                                             aria-label="Default select example" id="jk"
-                                                                            name="jenis_kelamin"
-                                                                            value="<?= $hasil_admon['jenis_kelamin'] ?>"">
-                                                                            <option value="
-                                                                            <?= $hasil_admon['jenis_kelamin'] ?>"><?= $hasil_admon['jenis_kelamin'] ?>
+                                                                            name="jenis_kelamin">
+                                                                            <option
+                                                                                value="<?= $hasil_dosen['jenis_kelamin'] ?>">
+                                                                                <?= $hasil_dosen['jenis_kelamin'] ?>
                                                                             </option>
                                                                             <option value="Laki-Laki">Laki-Laki</option>
                                                                             <option value="Perempuan">Perempuan</option>
@@ -215,14 +220,16 @@
                                                                     <div class="col">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="number" class="form-control"
-                                                                                name="no_hp" id="floatingPassword">
+                                                                                name="no_hp" id="floatingPassword"
+                                                                                value="<?= $hasil_dosen['no_hp'] ?>">
                                                                             <label for="floatingPassword">No HP</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-floating mb-2">
                                                                     <input type="text" class="form-control"
-                                                                        name="alamat" id="floatingPassword">
+                                                                        name="alamat" id="floatingPassword"
+                                                                        value="<?= $hasil_dosen['alamat'] ?>">
                                                                     <label for="floatingPassword">Alamat</label>
                                                                 </div>
                                                                 <div class="input-group mb-2">
@@ -235,8 +242,8 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-bs-dismiss="modal">Close</button>
-                                                                <input type="submit" class="btn btn-primary"
-                                                                    name="tambah" value="Tambah">
+                                                                <input type="submit" class="btn btn-primary" name="edit"
+                                                                    value="Edit">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -260,8 +267,8 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <form action="proses/prosesDataAdmin.php" method="post"
-                                                            enctype="multipart/form">
+                                                        <form action="proses/prosesDataDosen.php" method="POST"
+                                                            enctype="multipart/form-data">
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="id_dosen"
                                                                     value="<?= $hasil_dosen['id_dosen'] ?>">

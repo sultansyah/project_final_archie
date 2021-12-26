@@ -15,7 +15,7 @@ if (isset($_POST['tambah'])) {
 function redirect_page($message)
 {
     echo '<script>alert("' . $message . '");</script>';
-    // echo '<script>window.location="../dd";</script>';
+    echo '<script>window.location="../dd";</script>';
 }
 
 function tambah_data()
@@ -52,24 +52,33 @@ function tambah_data()
                         $no_hp = $_POST['no_hp'];
                         $alamat = $_POST['alamat'];
                         $nama_gambar_tmp = $_FILES['gambar']['name'];
-                        $nama_gambar_lower_str = strtolower($nama_gambar_tmp);
-                        $file_tmp = $_FILES['gambar']['tmp_name'];
+                        $gambar_ada = false;
 
-                        while (true) {
-                            $nama_gambar = rand(1000, 1000000) . "." . $nama_gambar_lower_str;
-                            $cek_nama_gambar = mysqli_query($conn, "SELECT * FROM tb_dosen WHERE gambar_dosen = '$nama_gambar'");
-                            $hasil_cek_gambar = mysqli_fetch_array($cek_nama_gambar);
-                            if (isset($hasil_cek_gambar['gambar_dosen']) and $hasil_cek_gambar['gambar_dosen'] == $nama_gambar) {
-                                continue;
-                            } else {
-                                break;
+                        if (!empty($nama_gambar_tmp)) {
+                            $gambar_ada = true;
+                            $nama_gambar_lower_str = strtolower($nama_gambar_tmp);
+                            $file_tmp = $_FILES['gambar']['tmp_name'];
+
+                            while (true) {
+                                $nama_gambar = rand(1000, 1000000) . "." . $nama_gambar_lower_str;
+                                $cek_nama_gambar = mysqli_query($conn, "SELECT * FROM tb_dosen WHERE gambar_dosen = '$nama_gambar'");
+                                $hasil_cek_gambar = mysqli_fetch_array($cek_nama_gambar);
+                                if (isset($hasil_cek_gambar['gambar_dosen']) and $hasil_cek_gambar['gambar_dosen'] == $nama_gambar) {
+                                    continue;
+                                } else {
+                                    break;
+                                }
                             }
+                        } else {
+                            $nama_gambar = "";
                         }
 
-                        $tambah_dosen = mysqli_query($conn, "INSERT INTO tb_dosen(id_user, nip, nama_dosen, jurusan, prodi, jenis_kelamin, no_hp, alamat, gambar__dosen) VALUES ('$id_user', '$nip', '$nama', '$jurusan', '$prodi', '$jenis_kelamin', '$no_hp', '$alamat', '$nama_gambar')");
+                        $tambah_dosen = mysqli_query($conn, "INSERT INTO tb_dosen(id_user, nip, nama_dosen, jurusan, prodi, jenis_kelamin, no_hp, alamat, gambar_dosen) VALUES ('$id_user', '$nip', '$nama', '$jurusan', '$prodi', '$jenis_kelamin', '$no_hp', '$alamat', '$nama_gambar')");
 
                         if ($tambah_dosen) {
-                            move_uploaded_file($file_tmp, '../../images/dosen/' . $nama_gambar);
+                            if ($gambar_ada == true) {
+                                move_uploaded_file($file_tmp, '../../images/dosen/' . $nama_gambar);
+                            }
                             redirect_page("Penambahan data berhasil");
                         } else {
                             echo 1;
@@ -116,7 +125,8 @@ function edit_data()
     $id_dosen = $_POST['id_dosen'];
     $nip = $_POST['nip'];
     $nama = $_POST['nama'];
-    $tempat_kerja = $_POST['tempat_kerja'];
+    $jurusan = $_POST['jurusan'];
+    $prodi = $_POST['prodi'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $no_hp = $_POST['no_hp'];
     $alamat = $_POST['alamat'];
@@ -148,10 +158,10 @@ function edit_data()
         $hasil_gambar_lama = mysqli_fetch_array($select_gambar_lama);
     }
 
-    $update = mysqli_query($conn, "UPDATE tb_dosen SET nip='$nip', nama_dosen='$nama', tempat_kerja='$tempat_kerja', jenis_kelamin='$jenis_kelamin', no_hp='$no_hp', alamat='$alamat', gambar_dosen='$nama_gambar' WHERE id_dosen = '$id_dosen'");
+    $update = mysqli_query($conn, "UPDATE tb_dosen SET nip = '$nip', nama_dosen='$nama', jurusan='$jurusan', prodi='$prodi',jenis_kelamin='$jenis_kelamin', no_hp='$no_hp', alamat='$alamat', gambar_dosen='$nama_gambar' WHERE id_dosen = '$id_dosen'");
 
     if ($update) {
-        if (isset($hasil_gambar_lama['gambar_dosen'])) {
+        if (isset($hasil_gambar_lama['gambar_dosen']) and !empty($hasil_gambar_lama['gambar_dosen'])) {
             unlink('../../images/dosen/' . $hasil_gambar_lama['gambar_dosen']);
         }
         if ($gambar_tidak_update == false) {
