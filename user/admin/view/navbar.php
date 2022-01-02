@@ -1,3 +1,5 @@
+<?php require "proses/data.php"; ?>
+
 <!-- Topbar Search -->
 <form class="d-none d-sm-inline-block form-inline mr-auto
                             ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -207,8 +209,8 @@
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <span class="mr-2"
-                style="color: black; font-size: 18px; font-weight: bold;"><?= $_SESSION['username'] ?></span>
-            <img class="img-profile rounded-circle" src="../../../img/profile.png">
+                style="color: black; font-size: 18px; font-weight: bold;"><?= $hasil_data['nama_admin'] ?></span>
+            <img class="img-profile rounded-circle" src="<?= $gambar; ?>">
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right
