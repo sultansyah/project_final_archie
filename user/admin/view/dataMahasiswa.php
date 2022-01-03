@@ -13,7 +13,7 @@
 
     <!-- modal tambah -->
     <div class="modal fade" id="ModalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
@@ -64,10 +64,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-floating mb-2">
-                            <input type="text" class="form-control" name="alamat" id="floatingPassword">
-                            <label for="floatingPassword">Alamat</label>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="jurusan"
@@ -86,6 +82,22 @@
                                     <option value="Statistika">Statistika</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <?php
+                                $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen");
+                                ?>
+                                <select class="form-select mb-3" aria-label="Default select example"
+                                    id="dosen_pembimbing" name="dosen_pembimbing">
+                                    <option value="">Dosen Pemimbing</option>
+                                    <?php while ($hasil_dosen = mysqli_fetch_array($select_dosen)) { ?>
+                                    <option value="<?= $hasil_dosen['nip'] ?>">
+                                        <?= $hasil_dosen['nama_dosen'] ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
                             <div class="col">
                                 <select class="form-select mb-3" aria-label="Default select example" id="jk"
                                     name="jenis_kelamin">
@@ -94,6 +106,10 @@
                                     <option value="Perempuan">Perempuan</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control" name="alamat" id="floatingPassword">
+                            <label for="floatingPassword">Alamat</label>
                         </div>
                         <div class="input-group mb-2">
                             <input type="file" class="form-control" id="inputGroupFile02" name="gambar">
@@ -126,6 +142,7 @@
                                     <th>Nim</th>
                                     <th>Jurusan</th>
                                     <th>Prodi</th>
+                                    <th>Dosen Pemimbing</th>
                                     <th>No HP</th>
                                     <th>Kelas</th>
                                     <th>Aksi</th>
@@ -137,6 +154,8 @@
                                 $no = 0;
                                 while ($hasil_mahasiswa = mysqli_fetch_array($select_mahasiswa)) {
                                     $no++;
+                                    $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen WHERE nip = '$hasil_mahasiswa[dosen_pembimbing]'");
+                                    $hasil_dosen = mysqli_fetch_array($select_dosen);
                                 ?>
                                 <tr>
                                     <th><?= $no; ?></th>
@@ -148,6 +167,7 @@
                                     <td><?= $hasil_mahasiswa['nim'] ?></td>
                                     <td><?= $hasil_mahasiswa['jurusan'] ?></td>
                                     <td><?= $hasil_mahasiswa['prodi'] ?></td>
+                                    <td><?= $hasil_dosen['nama_dosen'] ?></td>
                                     <td><?= $hasil_mahasiswa['no_hp'] ?></td>
                                     <td><?= $hasil_mahasiswa['kelas'] ?></td>
                                     <td>
@@ -172,11 +192,13 @@
                                                             enctype="multipart/form-data">
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="level" value="mahasiswa">
+                                                                <input type="hidden" name="nim_lama"
+                                                                    value="<?= $hasil_mahasiswa['nim'] ?>">
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" class="form-control"
-                                                                                name="nim" id="floatingInput"
+                                                                                name="nim_baru" id="floatingInput"
                                                                                 value="<?= $hasil_mahasiswa['nim'] ?>">
                                                                             <label for="floatingInput">NIM</label>
                                                                         </div>
@@ -211,7 +233,7 @@
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="form-floating mb-2">
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="date" class="form-control"
                                                                                 name="tanggal_lahir"
                                                                                 id="floatingPassword"
                                                                                 value="<?= $hasil_mahasiswa['tgl_lahir'] ?>">
@@ -229,12 +251,6 @@
                                                                                 Lahir</label>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control"
-                                                                        name="alamat" id="floatingPassword"
-                                                                        value="<?= $hasil_mahasiswa['alamat'] ?>">
-                                                                    <label for="floatingPassword">Alamat</label>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col">
@@ -266,6 +282,37 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <?php
+                                                                            $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen");
+                                                                            ?>
+                                                                        <select class="form-select mb-3"
+                                                                            aria-label="Default select example"
+                                                                            id="dosen_pembimbing"
+                                                                            name="dosen_pembimbing">
+                                                                            <?php
+                                                                                $select_nama_dosbing = mysqli_query($conn, "SELECT * FROM tb_dosen WHERE nip = '$hasil_mahasiswa[dosen_pembimbing]'");
+                                                                                $hasil_nama_dosbing = mysqli_fetch_array($select_nama_dosbing);
+                                                                                ?>
+                                                                            <option
+                                                                                value="<?= $hasil_mahasiswa['dosen_pembimbing'] ?>">
+                                                                                <?= $hasil_nama_dosbing['nama_dosen'] ?>
+                                                                            </option>
+                                                                            <?php
+                                                                                while ($hasil_dosen = mysqli_fetch_array($select_dosen)) {
+                                                                                    if ($hasil_dosen['nip'] == $hasil_mahasiswa['dosen_pembimbing']) {
+                                                                                        continue;
+                                                                                    } else {
+                                                                                ?>
+                                                                            <option value="<?= $hasil_dosen['nip'] ?>">
+                                                                                <?= $hasil_dosen['nama_dosen'] ?>
+                                                                            </option>
+                                                                            <?php }
+                                                                                } ?>
+                                                                        </select>
+                                                                    </div>
                                                                     <div class="col">
                                                                         <select class="form-select mb-3"
                                                                             aria-label="Default select example" id="jk"
@@ -274,10 +321,22 @@
                                                                                 value="<?= $hasil_mahasiswa['jenis_kelamin'] ?>">
                                                                                 <?= $hasil_mahasiswa['jenis_kelamin'] ?>
                                                                             </option>
+                                                                            <?php if ($hasil_mahasiswa['jenis_kelamin'] == 'Laki-Laki') { ?>
+                                                                            <option value="Perempuan">Perempuan</option>
+                                                                            <?php } elseif ($hasil_mahasiswa['jenis_kelamin'] == 'Perempuan') { ?>
+                                                                            <option value="Laki-Laki">Laki-Laki</option>
+                                                                            <?php } else { ?>
                                                                             <option value="Laki-Laki">Laki-Laki</option>
                                                                             <option value="Perempuan">Perempuan</option>
+                                                                            <?php } ?>
                                                                         </select>
                                                                     </div>
+                                                                </div>
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control"
+                                                                        name="alamat" id="floatingPassword"
+                                                                        value="<?= $hasil_mahasiswa['alamat'] ?>">
+                                                                    <label for="floatingPassword">Alamat</label>
                                                                 </div>
                                                                 <div class="input-group mb-2">
                                                                     <input type="file" class="form-control"

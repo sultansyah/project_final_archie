@@ -2,30 +2,31 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center
-                            justify-content-between mb-2">
+                            justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800" style="font-weight: bold;">Data Jadwal Pertemuan</h1>
     </div>
     <!-- End Page Heading -->
 
     <!-- Button trigger modal tambah data admin -->
     <button type="button" class="btn btn-primary mb-3 mt-2" data-bs-toggle="modal" data-bs-target="#ModalTambah">Tambah
-        Jadwal</button>
+        Data</button>
 
     <!-- modal tambah -->
     <div class="modal fade" id="ModalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Jadwal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="proses/prosesDataJadwalPertemuan.php" method="POST" enctype="multipart/form-data">
+                <form action="proses/prosesDataMahasiswa.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
+                        <input type="hidden" name="level" value="mahasiswa">
                         <div class="row">
                             <div class="col">
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="kode_admin" id="floatingInput">
-                                    <label for="floatingInput">Kode Admin</label>
+                                    <input type="text" class="form-control" name="nim" id="floatingInput" autofocus>
+                                    <label for="floatingInput">NIM</label>
                                 </div>
                             </div>
                             <div class="col">
@@ -37,11 +38,52 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <select class="form-select mb-3" aria-label="Default select example" id="jk"
-                                    name="tempat_kerja">
-                                    <option value="">Tempat Bekerja</option>
-                                    <option value="Jurusan">Jurusan</option>
-                                    <option value="ADM">ADM</option>
+                                <div class="form-floating mb-2">
+                                    <input type="text" class="form-control" name="kelas" id="floatingPassword">
+                                    <label for="floatingPassword">Kelas</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-2">
+                                    <input type="text" class="form-control" name="no_hp" id="floatingPassword">
+                                    <label for="floatingPassword">No HP</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-2">
+                                    <input type="date" class="form-control" name="tanggal_lahir" id="floatingPassword">
+                                    <label for="floatingPassword">Tanggal Lahir</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-2">
+                                    <input type="text" class="form-control" name="tempat_lahir" id="floatingPassword">
+                                    <label for="floatingPassword">Tempat Lahir</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control" name="alamat" id="floatingPassword">
+                            <label for="floatingPassword">Alamat</label>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-select mb-3" aria-label="Default select example" id="jurusan"
+                                    name="jurusan">
+                                    <option value="">Jurusan</option>
+                                    <option value="Teknologi Informasi Dan Komputer">Teknologi Informasi Dan Komputer
+                                    </option>
+                                    <option value="Kimia">Kimia</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-select mb-3" aria-label="Default select example" id="prodi"
+                                    name="prodi">
+                                    <option value="">Prodi</option>
+                                    <option value="Teknik Informatika">Teknik Informatika</option>
+                                    <option value="Statistika">Statistika</option>
                                 </select>
                             </div>
                             <div class="col">
@@ -52,15 +94,6 @@
                                     <option value="Perempuan">Perempuan</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-floating mb-2">
-                            <input type="number" class="form-control" name="no_hp" id="floatingPassword">
-                            <label for="floatingPassword">No HP</label>
-                        </div>
-                        <input type="hidden" name="level" value="admin">
-                        <div class="form-floating mb-2">
-                            <input type="text" class="form-control" name="alamat" id="floatingPassword">
-                            <label for="floatingPassword">Alamat</label>
                         </div>
                         <div class="input-group mb-2">
                             <input type="file" class="form-control" id="inputGroupFile02" name="gambar">
@@ -90,39 +123,43 @@
                                     <th>No</th>
                                     <th>Gambar</th>
                                     <th>Nama</th>
-                                    <th>Tempat Kerja</th>
-                                    <th>Jenis Kelamin</th>
+                                    <th>Nim</th>
+                                    <th>Jurusan</th>
+                                    <th>Prodi</th>
                                     <th>No HP</th>
-                                    <th>Alamat</th>
+                                    <th>Kelas</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $select_admin = mysqli_query($conn, "SELECT * FROM tb_admin");
-                                while ($hasil_admin = mysqli_fetch_array($select_admin)) {
+                                $select_mahasiswa = mysqli_query($conn, "SELECT * FROM tb_mahasiswa");
+                                $no = 0;
+                                while ($hasil_mahasiswa = mysqli_fetch_array($select_mahasiswa)) {
+                                    $no++;
                                 ?>
                                 <tr>
-                                    <th scope="row"><?= $hasil_admin['id_admin'] ?></th>
+                                    <th><?= $no; ?></th>
                                     <td>
-                                        <img src="<?= "../images/admin/" . $hasil_admin['gambar_admin']; ?>" width="100"
-                                            height="100" class="card-img-top" alt="...">
+                                        <img src="<?= "../images/mahasiswa/" . $hasil_mahasiswa['gambar_mahasiswa']; ?>"
+                                            width="100" height="100" class="card-img-top" alt="...">
                                     </td>
-                                    <td><?= $hasil_admin['nama_admin'] ?></td>
-                                    <td><?= $hasil_admin['tempat_kerja'] ?></td>
-                                    <td><?= $hasil_admin['jenis_kelamin'] ?></td>
-                                    <td><?= $hasil_admin['no_hp'] ?></td>
-                                    <td><?= $hasil_admin['alamat'] ?></td>
+                                    <td><?= $hasil_mahasiswa['nama_mahasiswa'] ?></td>
+                                    <td><?= $hasil_mahasiswa['nim'] ?></td>
+                                    <td><?= $hasil_mahasiswa['jurusan'] ?></td>
+                                    <td><?= $hasil_mahasiswa['prodi'] ?></td>
+                                    <td><?= $hasil_mahasiswa['no_hp'] ?></td>
+                                    <td><?= $hasil_mahasiswa['kelas'] ?></td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <!-- Button trigger modal edit -->
                                             <button type="button" class="btn btn-secondary mr-2" data-bs-toggle="modal"
-                                                data-bs-target="#ModalEdit<?= $hasil_admin['id_admin'] ?>">
+                                                data-bs-target="#ModalEdit<?= $hasil_mahasiswa['nim'] ?>">
                                                 <i class="fas fa-user-edit"></i>
                                             </button>
 
                                             <!-- Modal Edit -->
-                                            <div class="modal fade" id="ModalEdit<?= $hasil_admin['id_admin'] ?>"
+                                            <div class="modal fade" id="ModalEdit<?= $hasil_mahasiswa['nim'] ?>"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -131,66 +168,116 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <form action="proses/prosesDataJadwalPertemuan.php"
-                                                            method="POST" enctype="multipart/form-data">
+                                                        <form action="proses/prosesDataMahasiswa.php" method="POST"
+                                                            enctype="multipart/form-data">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="id_admin"
-                                                                    value="<?= $hasil_admin['id_admin'] ?>">
+                                                                <input type="hidden" name="level" value="mahasiswa">
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" class="form-control"
-                                                                                name="kode_admin" id="floatingInput"
-                                                                                value="<?= $hasil_admin['kode_admin'] ?>">
-                                                                            <label for="floatingInput">Kode
-                                                                                Admin</label>
+                                                                                name="nim" id="floatingInput"
+                                                                                value="<?= $hasil_mahasiswa['nim'] ?>">
+                                                                            <label for="floatingInput">NIM</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="    col">
+                                                                    <div class="col">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" class="form-control"
                                                                                 name="nama" id="floatingInput"
-                                                                                value="<?= $hasil_admin['nama_admin'] ?>">
+                                                                                value="<?= $hasil_mahasiswa['nama_mahasiswa'] ?>">
                                                                             <label for="floatingInput">Nama</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" class="form-control"
+                                                                                name="kelas" id="floatingPassword"
+                                                                                value="<?= $hasil_mahasiswa['kelas'] ?>">
+                                                                            <label for="floatingPassword">Kelas</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="number" class="form-control"
+                                                                                name="no_hp" id="floatingPassword"
+                                                                                value="<?= $hasil_mahasiswa['no_hp'] ?>">
+                                                                            <label for="floatingPassword">No HP</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" class="form-control"
+                                                                                name="tanggal_lahir"
+                                                                                id="floatingPassword"
+                                                                                value="<?= $hasil_mahasiswa['tgl_lahir'] ?>">
+                                                                            <label for="floatingPassword">Tanggal
+                                                                                Lahir</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="number" class="form-control"
+                                                                                name="tempat_lahir"
+                                                                                id="floatingPassword"
+                                                                                value="<?= $hasil_mahasiswa['tempat_lahir'] ?>">
+                                                                            <label for="floatingPassword">Tempat
+                                                                                Lahir</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control"
+                                                                        name="alamat" id="floatingPassword"
+                                                                        value="<?= $hasil_mahasiswa['alamat'] ?>">
+                                                                    <label for="floatingPassword">Alamat</label>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
                                                                         <select class="form-select mb-3"
-                                                                            aria-label="Default select example" id="jk"
-                                                                            name="tempat_kerja"
-                                                                            value="<?= $hasil_admin['tempat_kerja'] ?>">
-                                                                            <option><?= $hasil_admin['tempat_kerja'] ?>
+                                                                            aria-label="Default select example"
+                                                                            id="jurusan" name="jurusan">
+                                                                            <option
+                                                                                value="<?= $hasil_mahasiswa['jurusan'] ?>">
+                                                                                <?= $hasil_mahasiswa['jurusan'] ?>
                                                                             </option>
-                                                                            <option value="Jurusan">Jurusan</option>
-                                                                            <option value="ADM">ADM</option>
+                                                                            <option
+                                                                                value="Teknologi Informasi Dan Komputer">
+                                                                                Teknologi Informasi Dan Komputer
+                                                                            </option>
+                                                                            <option value="Kimia">Kimia</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <select class="form-select mb-3"
+                                                                            aria-label="Default select example"
+                                                                            id="prodi" name="prodi">
+                                                                            <option
+                                                                                value="<?= $hasil_mahasiswa['prodi'] ?>">
+                                                                                <?= $hasil_mahasiswa['prodi'] ?>
+                                                                            </option>
+                                                                            <option value="Teknik Informatika">Teknik
+                                                                                Informatika</option>
+                                                                            <option value="Statistika">Statistika
+                                                                            </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col">
                                                                         <select class="form-select mb-3"
                                                                             aria-label="Default select example" id="jk"
-                                                                            name="jenis_kelamin"
-                                                                            value="<?= $hasil_admin['jenis_kelamin'] ?>">
-                                                                            <option><?= $hasil_admin['jenis_kelamin'] ?>
+                                                                            name="jenis_kelamin">
+                                                                            <option
+                                                                                value="<?= $hasil_mahasiswa['jenis_kelamin'] ?>">
+                                                                                <?= $hasil_mahasiswa['jenis_kelamin'] ?>
                                                                             </option>
                                                                             <option value="Laki-Laki">Laki-Laki</option>
                                                                             <option value="Perempuan">Perempuan</option>
                                                                         </select>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-floating mb-2">
-                                                                    <input type="number" class="form-control"
-                                                                        name="no_hp" id="floatingPassword"
-                                                                        value="<?= $hasil_admin['no_hp'] ?>">
-                                                                    <label for="floatingPassword">No HP</label>
-                                                                </div>
-                                                                <input type="hidden" name="level" value="admin">
-                                                                <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control"
-                                                                        name="alamat" id="floatingPassword"
-                                                                        value="<?= $hasil_admin['alamat'] ?>">
-                                                                    <label for="floatingPassword">Alamat</label>
                                                                 </div>
                                                                 <div class="input-group mb-2">
                                                                     <input type="file" class="form-control"
@@ -213,12 +300,12 @@
 
                                             <!-- Button trigger modal hapus -->
                                             <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
-                                                data-bs-target="#ModalHapus<?= $hasil_admin['id_admin'] ?>">
+                                                data-bs-target="#ModalHapus<?= $hasil_mahasiswa['nim'] ?>">
                                                 <i class="fas fa-user-slash"></i>
                                             </button>
 
                                             <!-- Modal Hapus -->
-                                            <div class="modal fade" id="ModalHapus<?= $hasil_admin['id_admin'] ?>"
+                                            <div class="modal fade" id="ModalHapus<?= $hasil_mahasiswa['nim'] ?>"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -227,16 +314,16 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <form action="proses/prosesDataJadwalPertemuan.php"
-                                                            method="POST" enctype="multipart/form-data">
+                                                        <form action="proses/prosesDataMahasiswa.php" method="POST"
+                                                            enctype="multipart/form-data">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="id_admin"
-                                                                    value="<?= $hasil_admin['id_admin'] ?>">
+                                                                <input type="hidden" name="nim"
+                                                                    value="<?= $hasil_mahasiswa['nim'] ?>">
                                                                 <input type="hidden" name="id_user"
-                                                                    value="<?= $hasil_admin['id_user'] ?>">
+                                                                    value="<?= $hasil_mahasiswa['id_user'] ?>">
                                                                 Tekan Hapus untuk menghapus data
                                                                 <span
-                                                                    style="color:red"><?= $hasil_admin['nama_admin'] ?></span>
+                                                                    style="color:red"><?= $hasil_mahasiswa['nama_mahasiswa'] ?></span>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"

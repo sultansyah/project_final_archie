@@ -54,6 +54,11 @@ function tambah_data()
                         $kelas = $_POST['kelas'];
                         $tgl_lahir = $_POST['tanggal_lahir'];
                         $tempat_lahir = $_POST['tempat_lahir'];
+                        if (empty($_POST['dosen_pembimbing'])) {
+                            $dosen_pembimbing = "1";
+                        } else {
+                            $dosen_pembimbing = $_POST['dosen_pembimbing'];
+                        }
                         $nama_gambar_tmp = $_FILES['gambar']['name'];
                         $gambar_ada = false;
 
@@ -78,7 +83,7 @@ function tambah_data()
 
                         $tambah_mahasiswa = mysqli_query(
                             $conn,
-                            "INSERT INTO tb_mahasiswa(nim, id_user, nama_mahasiswa, kelas, jurusan, prodi, jenis_kelamin, alamat, no_hp, tgl_lahir, tempat_lahir, gambar_mahasiswa) VALUES ('$nim', '$id_user', '$nama', '$kelas', '$jurusan', '$prodi', '$jenis_kelamin', '$alamat', '$no_hp',  " . ($tgl_lahir == NULL ? "NULL" : "'$tgl_lahir'") . ", '$tempat_lahir', '$nama_gambar')"
+                            "INSERT INTO tb_mahasiswa(nim, id_user, nama_mahasiswa, kelas, jurusan, prodi, dosen_pembimbing, jenis_kelamin, alamat, no_hp, tgl_lahir, tempat_lahir, gambar_mahasiswa) VALUES ('$nim', '$id_user', '$nama', '$kelas', '$jurusan', '$prodi', '$dosen_pembimbing', '$jenis_kelamin', '$alamat', '$no_hp',  " . ($tgl_lahir == NULL ? "NULL" : "'$tgl_lahir'") . ", '$tempat_lahir', '$nama_gambar')"
                         );
 
                         if ($tambah_mahasiswa) {
@@ -87,6 +92,7 @@ function tambah_data()
                             }
                             redirect_page("Penambahan data berhasil");
                         } else {
+                            echo $dosen_pembimbing;
                             echo 1;
                             redirect_page("Penambahan data gagal, mohon kontak admin");
                         }
@@ -94,7 +100,6 @@ function tambah_data()
                         redirect_page("Username user tidak ditemukan, mohon kontak admin");
                     }
                 } else {
-                    echo 2;
                     redirect_page("Data yang anda masukkan sudah ada, mohon kontak admin");
                 }
             }
@@ -128,7 +133,13 @@ function hapus_data()
 function edit_data()
 {
     global $conn;
-    $nim = $_POST['nim'];
+    $nim_lama = $_POST['nim_lama'];
+    $nim_baru = $_POST['nim_baru'];
+    if ($nim_baru == '') {
+        $nim = $nim_lama;
+    } else {
+        $nim = $nim_baru;
+    }
     $nama = $_POST['nama'];
     $jurusan = $_POST['jurusan'];
     $prodi = $_POST['prodi'];
@@ -138,11 +149,12 @@ function edit_data()
     $alamat = $_POST['alamat'];
     $tgl_lahir = $_POST['tanggal_lahir'];
     $tempat_lahir = $_POST['tempat_lahir'];
+    $dosen_pembimbing = $_POST['dosen_pembimbing'];
     $nama_gambar_tmp = $_FILES['gambar']['name'];
     $gambar_tidak_update = false;
 
     if ($nama_gambar_tmp == '') {
-        $select_nama_gambar = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$nim'");
+        $select_nama_gambar = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$nim_lama'");
         $hasil_cek_gambar = mysqli_fetch_array($select_nama_gambar);
         $nama_gambar = $hasil_cek_gambar['gambar_mahasiswa'];
         $gambar_tidak_update = true;
@@ -162,13 +174,13 @@ function edit_data()
         }
 
         //mengambil nama file gambar lama
-        $select_gambar_lama = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$nim'");
+        $select_gambar_lama = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$nim_lama'");
         $hasil_gambar_lama = mysqli_fetch_array($select_gambar_lama);
     }
 
     $update = mysqli_query(
         $conn,
-        "UPDATE tb_mahasiswa SET nim='$nim',nama_mahasiswa='$nama',kelas='$kelas',jurusan='$jurusan',prodi='$prodi',jenis_kelamin='$jenis_kelamin',alamat='$alamat',no_hp='$no_hp',tgl_lahir=  " . ($tgl_lahir == NULL ? "NULL" : "'$tgl_lahir'") . ",tempat_lahir='$tempat_lahir',gambar_mahasiswa='$nama_gambar' WHERE nim = '$nim'"
+        "UPDATE tb_mahasiswa SET nim='$nim',nama_mahasiswa='$nama',kelas='$kelas',jurusan='$jurusan',prodi='$prodi',dosen_pembimbing='$dosen_pembimbing',jenis_kelamin='$jenis_kelamin',alamat='$alamat',no_hp='$no_hp',tgl_lahir=  " . ($tgl_lahir == NULL ? "NULL" : "'$tgl_lahir'") . ",tempat_lahir='$tempat_lahir',gambar_mahasiswa='$nama_gambar' WHERE nim = '$nim_lama'"
     );
 
     if ($update) {
