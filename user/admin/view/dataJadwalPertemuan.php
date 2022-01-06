@@ -7,97 +7,42 @@
     </div>
     <!-- End Page Heading -->
 
-    <!-- Button trigger modal tambah data admin -->
-    <button type="button" class="btn btn-primary mb-3 mt-2" data-bs-toggle="modal" data-bs-target="#ModalTambah">Tambah
-        Data</button>
+    <!-- Button trigger modal ajukan judul TA -->
+    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#ModalTambahPertemuan">
+        Tambah Pertemuan
+    </button>
 
-    <!-- modal tambah -->
-    <div class="modal fade" id="ModalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+    <!-- Modal Tambah Pertemuan -->
+    <div class="modal fade" id="ModalTambahPertemuan" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Pertemuan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="proses/prosesDataMahasiswa.php" method="POST" enctype="multipart/form-data">
+                <form action="proses/prosesDataJadwalPertemuan.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <input type="hidden" name="level" value="mahasiswa">
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="nim" id="floatingInput" autofocus>
-                                    <label for="floatingInput">NIM</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="nama" id="floatingInput">
-                                    <label for="floatingInput">Nama</label>
-                                </div>
-                            </div>
+                        <input type="hidden" name="id_user_pembuat" value="<?= $hasil_data['id_user'] ?>">
+                        <input type="hidden" name="level_pembuat" value="admin">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="judul" id="floatingInput" autofocus>
+                            <label for="floatingInput">Judul</label>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="kelas" id="floatingPassword">
-                                    <label for="floatingPassword">Kelas</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="no_hp" id="floatingPassword">
-                                    <label for="floatingPassword">No HP</label>
-                                </div>
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="keterangan" id="floatingInput">
+                            <label for="floatingInput">Keterangan</label>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-floating mb-2">
-                                    <input type="date" class="form-control" name="tanggal_lahir" id="floatingPassword">
-                                    <label for="floatingPassword">Tanggal Lahir</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="tempat_lahir" id="floatingPassword">
-                                    <label for="floatingPassword">Tempat Lahir</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-floating mb-2">
-                            <input type="text" class="form-control" name="alamat" id="floatingPassword">
-                            <label for="floatingPassword">Alamat</label>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <select class="form-select mb-3" aria-label="Default select example" id="jurusan"
-                                    name="jurusan">
-                                    <option value="">Jurusan</option>
-                                    <option value="Teknologi Informasi Dan Komputer">Teknologi Informasi Dan Komputer
-                                    </option>
-                                    <option value="Kimia">Kimia</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select class="form-select mb-3" aria-label="Default select example" id="prodi"
-                                    name="prodi">
-                                    <option value="">Prodi</option>
-                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                    <option value="Statistika">Statistika</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select class="form-select mb-3" aria-label="Default select example" id="jk"
-                                    name="jenis_kelamin">
-                                    <option value="">Jenis Kelamin</option>
-                                    <option value="Laki-Laki">Laki-Laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-group mb-2">
-                            <input type="file" class="form-control" id="inputGroupFile02" name="gambar">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        <select class="form-select mb-3" aria-label="Default select example" id="kategori"
+                            name="kategori">
+                            <option value="Belum diatur">Kategori</option>
+                            <option value="Bimbingan">Bimbingan</option>
+                            <option value="Konsultasi">Konsultasi</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                        <div class="form-floating mb-3">
+                            <input type="datetime-local" class="form-control" name="tanggal_jam" id="floatingInput">
+                            <label for="floatingInput">Tanggal Dan Jam Pertemuan</label>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -108,7 +53,7 @@
             </div>
         </div>
     </div>
-    <!-- akhir modal tambah -->
+    <!-- Akhir Modal Tambah Pertemuan -->
 
     <!-- Content Row -->
     <div class="row">
@@ -121,45 +66,57 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Gambar</th>
-                                    <th>Nama</th>
-                                    <th>Nim</th>
-                                    <th>Jurusan</th>
-                                    <th>Prodi</th>
-                                    <th>No HP</th>
-                                    <th>Kelas</th>
+                                    <th>Judul</th>
+                                    <th>Keterangan</th>
+                                    <th>Kategori</th>
+                                    <th>Tanggal Dan Jadwal Pertemuan</th>
+                                    <th>Nama Pembuat</th>
+                                    <th>Nama Pengedit</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $select_mahasiswa = mysqli_query($conn, "SELECT * FROM tb_mahasiswa");
+                                $select_jwp = mysqli_query($conn, "SELECT * FROM tb_jadwal_pertemuan");
                                 $no = 0;
-                                while ($hasil_mahasiswa = mysqli_fetch_array($select_mahasiswa)) {
+                                while ($hasil_jwp = mysqli_fetch_array($select_jwp)) {
                                     $no++;
                                 ?>
                                 <tr>
                                     <th><?= $no; ?></th>
+                                    <td><?= $hasil_jwp['judul'] ?></td>
+                                    <td><?= $hasil_jwp['keterangan'] ?></td>
+                                    <td><?= $hasil_jwp['kategori'] ?></td>
+                                    <td><?= date("d-m-Y H:i:s", strtotime($hasil_jwp['tanggal_jam'])) ?>
+                                        <?php
+                                            $tabel_pembuat = 'tb_' . $hasil_jwp['level_pembuat'];
+                                            $select_pembuat = mysqli_query($conn, "SELECT * FROM $tabel_pembuat WHERE id_user = '$hasil_jwp[id_user_pembuat]'");
+                                            $hasil_pembuat = mysqli_fetch_array($select_pembuat);
+                                            ?>
                                     <td>
-                                        <img src="<?= "../images/mahasiswa/" . $hasil_mahasiswa['gambar_mahasiswa']; ?>"
-                                            width="100" height="100" class="card-img-top" alt="...">
+                                        <?= $hasil_pembuat['nama_' . $hasil_jwp['level_pembuat']] . ' - ' . $hasil_jwp['level_pembuat'] ?>
                                     </td>
-                                    <td><?= $hasil_mahasiswa['nama_mahasiswa'] ?></td>
-                                    <td><?= $hasil_mahasiswa['nim'] ?></td>
-                                    <td><?= $hasil_mahasiswa['jurusan'] ?></td>
-                                    <td><?= $hasil_mahasiswa['prodi'] ?></td>
-                                    <td><?= $hasil_mahasiswa['no_hp'] ?></td>
-                                    <td><?= $hasil_mahasiswa['kelas'] ?></td>
+                                    <td>
+                                        <?php if (isset($hasil_jwp['id_user_pengedit'])) {
+                                                $tabel_pengedit = 'tb_' . $hasil_jwp['level_pengedit'];
+                                                $select_pengedit = mysqli_query($conn, "SELECT * FROM $tabel_pengedit WHERE id_user = '$hasil_jwp[id_user_pengedit]'");
+                                                $hasil_pengedit = mysqli_fetch_array($select_pengedit);
+                                                echo $hasil_pengedit['nama_' . $hasil_jwp['level_pengedit']] . ' - ' . $hasil_jwp['level_pengedit'];
+                                            } else {
+                                                echo "-";
+                                            }
+                                            ?>
+                                    </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <!-- Button trigger modal edit -->
                                             <button type="button" class="btn btn-secondary mr-2" data-bs-toggle="modal"
-                                                data-bs-target="#ModalEdit<?= $hasil_mahasiswa['nim'] ?>">
+                                                data-bs-target="#ModalEdit<?= $hasil_jwp['id_jadwal'] ?>">
                                                 <i class="fas fa-user-edit"></i>
                                             </button>
 
                                             <!-- Modal Edit -->
-                                            <div class="modal fade" id="ModalEdit<?= $hasil_mahasiswa['nim'] ?>"
+                                            <div class="modal fade" id="ModalEdit<?= $hasil_jwp['id_jadwal'] ?>"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -168,122 +125,43 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <form action="proses/prosesDataMahasiswa.php" method="POST"
-                                                            enctype="multipart/form-data">
+                                                        <form action="proses/prosesDataJadwalPertemuan.php"
+                                                            method="POST" enctype="multipart/form-data">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="level" value="mahasiswa">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <div class="form-floating mb-2">
-                                                                            <input type="text" class="form-control"
-                                                                                name="nim" id="floatingInput"
-                                                                                value="<?= $hasil_mahasiswa['nim'] ?>">
-                                                                            <label for="floatingInput">NIM</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <div class="form-floating mb-2">
-                                                                            <input type="text" class="form-control"
-                                                                                name="nama" id="floatingInput"
-                                                                                value="<?= $hasil_mahasiswa['nama_mahasiswa'] ?>">
-                                                                            <label for="floatingInput">Nama</label>
-                                                                        </div>
-                                                                    </div>
+                                                                <input type="hidden" name="id_jadwal"
+                                                                    value="<?= $hasil_jwp['id_jadwal'] ?>">
+                                                                <input type="hidden" name="id_user_pengedit"
+                                                                    value="<?= $hasil_data['id_user'] ?>">
+                                                                <input type="hidden" name="level_pengedit"
+                                                                    value="admin">
+                                                                <div class="form-floating mb-3">
+                                                                    <input type="text" class="form-control" name="judul"
+                                                                        id="floatingInput"
+                                                                        value="<?= $hasil_jwp['judul'] ?>" autofocus>
+                                                                    <label for="floatingInput">Judul</label>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <div class="form-floating mb-2">
-                                                                            <input type="text" class="form-control"
-                                                                                name="kelas" id="floatingPassword"
-                                                                                value="<?= $hasil_mahasiswa['kelas'] ?>">
-                                                                            <label for="floatingPassword">Kelas</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <div class="form-floating mb-2">
-                                                                            <input type="number" class="form-control"
-                                                                                name="no_hp" id="floatingPassword"
-                                                                                value="<?= $hasil_mahasiswa['no_hp'] ?>">
-                                                                            <label for="floatingPassword">No HP</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <div class="form-floating mb-2">
-                                                                            <input type="text" class="form-control"
-                                                                                name="tanggal_lahir"
-                                                                                id="floatingPassword"
-                                                                                value="<?= $hasil_mahasiswa['tgl_lahir'] ?>">
-                                                                            <label for="floatingPassword">Tanggal
-                                                                                Lahir</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <div class="form-floating mb-2">
-                                                                            <input type="number" class="form-control"
-                                                                                name="tempat_lahir"
-                                                                                id="floatingPassword"
-                                                                                value="<?= $hasil_mahasiswa['tempat_lahir'] ?>">
-                                                                            <label for="floatingPassword">Tempat
-                                                                                Lahir</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-floating mb-2">
+                                                                <div class="form-floating mb-3">
                                                                     <input type="text" class="form-control"
-                                                                        name="alamat" id="floatingPassword"
-                                                                        value="<?= $hasil_mahasiswa['alamat'] ?>">
-                                                                    <label for="floatingPassword">Alamat</label>
+                                                                        name="keterangan" id="floatingInput"
+                                                                        value="<?= $hasil_jwp['keterangan'] ?>">
+                                                                    <label for="floatingInput">Keterangan</label>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <select class="form-select mb-3"
-                                                                            aria-label="Default select example"
-                                                                            id="jurusan" name="jurusan">
-                                                                            <option
-                                                                                value="<?= $hasil_mahasiswa['jurusan'] ?>">
-                                                                                <?= $hasil_mahasiswa['jurusan'] ?>
-                                                                            </option>
-                                                                            <option
-                                                                                value="Teknologi Informasi Dan Komputer">
-                                                                                Teknologi Informasi Dan Komputer
-                                                                            </option>
-                                                                            <option value="Kimia">Kimia</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <select class="form-select mb-3"
-                                                                            aria-label="Default select example"
-                                                                            id="prodi" name="prodi">
-                                                                            <option
-                                                                                value="<?= $hasil_mahasiswa['prodi'] ?>">
-                                                                                <?= $hasil_mahasiswa['prodi'] ?>
-                                                                            </option>
-                                                                            <option value="Teknik Informatika">Teknik
-                                                                                Informatika</option>
-                                                                            <option value="Statistika">Statistika
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <select class="form-select mb-3"
-                                                                            aria-label="Default select example" id="jk"
-                                                                            name="jenis_kelamin">
-                                                                            <option
-                                                                                value="<?= $hasil_mahasiswa['jenis_kelamin'] ?>">
-                                                                                <?= $hasil_mahasiswa['jenis_kelamin'] ?>
-                                                                            </option>
-                                                                            <option value="Laki-Laki">Laki-Laki</option>
-                                                                            <option value="Perempuan">Perempuan</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="input-group mb-2">
-                                                                    <input type="file" class="form-control"
-                                                                        id="inputGroupFile02" name="gambar">
-                                                                    <label class="input-group-text"
-                                                                        for="inputGroupFile02">Upload</label>
+                                                                <select class="form-select mb-3"
+                                                                    aria-label="Default select example" id="kategori"
+                                                                    name="kategori">
+                                                                    <option value="<?= $hasil_jwp['kategori'] ?>">
+                                                                        <?= $hasil_jwp['kategori'] ?>
+                                                                    </option>
+                                                                    <option value="Bimbingan">Bimbingan</option>
+                                                                    <option value="Konsultasi">Konsultasi</option>
+                                                                    <option value="Lainnya">Lainnya</option>
+                                                                </select>
+                                                                <div class="form-floating mb-3">
+                                                                    <input type="datetime-local" class="form-control"
+                                                                        name="tanggal_jam" id="floatingInput"
+                                                                        value="<?= date("Y-m-d\TH:i:s", strtotime($hasil_jwp['tanggal_jam'])) ?>">
+                                                                    <label for="floatingInput">Tanggal Dan Jam
+                                                                        Pertemuan</label>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -300,12 +178,12 @@
 
                                             <!-- Button trigger modal hapus -->
                                             <button type="button" class="btn btn-danger mr-2" data-bs-toggle="modal"
-                                                data-bs-target="#ModalHapus<?= $hasil_mahasiswa['nim'] ?>">
+                                                data-bs-target="#ModalHapus<?= $hasil_jwp['id_jadwal'] ?>">
                                                 <i class="fas fa-user-slash"></i>
                                             </button>
 
                                             <!-- Modal Hapus -->
-                                            <div class="modal fade" id="ModalHapus<?= $hasil_mahasiswa['nim'] ?>"
+                                            <div class="modal fade" id="ModalHapus<?= $hasil_jwp['id_jadwal'] ?>"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -314,16 +192,14 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <form action="proses/prosesDataMahasiswa.php" method="POST"
-                                                            enctype="multipart/form-data">
+                                                        <form action="proses/prosesDataJadwalPertemuan.php"
+                                                            method="POST" enctype="multipart/form-data">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="nim"
-                                                                    value="<?= $hasil_mahasiswa['nim'] ?>">
-                                                                <input type="hidden" name="id_user"
-                                                                    value="<?= $hasil_mahasiswa['id_user'] ?>">
-                                                                Tekan Hapus untuk menghapus data
+                                                                <input type="hidden" name="id_jadwal"
+                                                                    value="<?= $hasil_jwp['id_jadwal'] ?>">
+                                                                Tekan Hapus untuk menghapus jadwal pertemuan
                                                                 <span
-                                                                    style="color:red"><?= $hasil_mahasiswa['nama_mahasiswa'] ?></span>
+                                                                    style="color:red"><?= $hasil_jwp['judul'] ?></span>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -336,7 +212,6 @@
                                                 </div>
                                             </div>
                                             <!-- Akhir Modal Hapus -->
-
                                         </div>
                                     </td>
                                 </tr>

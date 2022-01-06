@@ -10,7 +10,7 @@
                         <p class="mt-1" style="font-weight: bold;"><?= $hasil_data['nama_admin'] ?></p>
                     </label>
                     <input type="file" style="display: none;" id="tombol_edit" name="gambar">
-                    <input type="hidden" name="id" value="<?= $hasil_data['id_user'] ?>">
+                    <input type="hidden" name="id_user" value="<?= $hasil_data['id_user'] ?>">
                     <center><input type="submit" class="btn btn-primary" id="tombol_kirim" name="ganti_gambar"
                             value="Ubah Gambar"></center>
                 </form>
@@ -49,10 +49,14 @@
                             <div class="col">
                                 <select class="form-select mb-3 mt-1" aria-label="Default select example" id="jk"
                                     name="jenis_kelamin" value="<?= $hasil_data['jenis_kelamin'] ?>">
-                                    <option><?= $hasil_data['jenis_kelamin'] ?>
+                                    <option>
+                                        <?= $hasil_data['jenis_kelamin'] ?>
                                     </option>
-                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <?php if ($hasil_data['jenis_kelamin'] == 'Laki-Laki') { ?>
                                     <option value="Perempuan">Perempuan</option>
+                                    <?php } else { ?>
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>

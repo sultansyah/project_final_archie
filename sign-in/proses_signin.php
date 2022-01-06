@@ -8,7 +8,7 @@ $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'
 $row = mysqli_fetch_array($query);
 
 if ($query) {
-    if (isset($row['username']) && isset($row['password']) && $row['username'] == $username && $row['password'] == $password) {
+    if ($row['username'] == $username && $row['password'] == $password) {
         session_start();
         $_SESSION['username'] = $username;
         $_SESSION['level'] = $row['level'];
@@ -22,6 +22,6 @@ if ($query) {
         }
     } else {
         echo '<script>alert("Mohon maaf username atau password yang anda masukkan salah");</script>';
-        echo '<script>window.location="../sign-in";</script>';
+        // echo '<script>window.location="../sign-in";</script>';
     }
 }

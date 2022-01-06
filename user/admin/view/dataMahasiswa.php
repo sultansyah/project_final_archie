@@ -302,7 +302,7 @@
                                                                             </option>
                                                                             <?php
                                                                                 while ($hasil_dosen = mysqli_fetch_array($select_dosen)) {
-                                                                                    if ($hasil_dosen['nip'] == $hasil_mahasiswa['dosen_pembimbing']) {
+                                                                                    if ($hasil_dosen['nip'] == $hasil_mahasiswa['dosen_pembimbing'] or $hasil_dosen['nip'] == '1') {
                                                                                         continue;
                                                                                     } else {
                                                                                 ?>

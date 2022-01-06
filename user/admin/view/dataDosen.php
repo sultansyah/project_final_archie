@@ -117,7 +117,10 @@
                                 $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen");
                                 $no = 0;
                                 while ($hasil_dosen = mysqli_fetch_array($select_dosen)) {
-                                    $no++;
+                                    if ($hasil_dosen['nip'] == '1') {
+                                        continue;
+                                    } else {
+                                        $no++;
                                 ?>
                                 <tr>
                                     <th scope="row"><?= $no ?></th>
@@ -293,7 +296,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                                <?php }
+                                } ?>
                             </tbody>
                         </table>
                     </div>

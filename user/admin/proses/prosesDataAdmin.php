@@ -1,5 +1,6 @@
 <?php
 require "../../koneksi.php";
+require "../../func.php";
 
 if (isset($_POST['tambah'])) {
     tambah_data();
@@ -8,14 +9,7 @@ if (isset($_POST['tambah'])) {
 } elseif (isset($_POST['hapus'])) {
     hapus_data();
 } else {
-    redirect_page("Mohon masuk ke halaman data admin terlebih dahulu");
-}
-
-//function untuk menampilkan alert dan mendirect ke halaman data admin
-function redirect_page($message)
-{
-    echo '<script>alert("' . $message . '");</script>';
-    echo '<script>window.location="../da";</script>';
+    redirect_page("Mohon masuk ke halaman data admin terlebih dahulu", "da");
 }
 
 function tambah_data()
@@ -35,7 +29,7 @@ function tambah_data()
             $hasil_admin2 = mysqli_fetch_array($cek_admin2);
 
             if (isset($hasil_admin['kode_admin']) and isset($hasil_admin2['username']) and $hasil_admin['kode_admin'] == $kode_admin and $hasil_admin2['username'] == $username_admin) {
-                redirect_page("Data kode admin yang anda masukkan sudah ada");
+                redirect_page("Data kode admin yang anda masukkan sudah ada", "da");
             } else {
                 $add_user = mysqli_query($conn, "INSERT INTO tb_user (username, password, level) VALUES ('$username_admin', '$password_admin', '$level')");
 
@@ -69,24 +63,22 @@ function tambah_data()
 
                         if ($tambah_admin) {
                             move_uploaded_file($file_tmp, '../../images/admin/' . $nama_gambar);
-                            redirect_page("Penambahan data berhasil");
+                            redirect_page("Penambahan data berhasil", "da");
                         } else {
-                            echo 1;
-                            redirect_page("Penambahan data gagal, mohon kontak admin");
+                            redirect_page("Penambahan data gagal, mohon kontak admin", "da");
                         }
                     } else {
-                        redirect_page("Username user tidak ditemukan, mohon kontak admin");
+                        redirect_page("Username user tidak ditemukan, mohon kontak admin", "da");
                     }
                 } else {
-                    echo 2;
-                    redirect_page("Penambahan data gagal, mohon kontak admin");
+                    redirect_page("Penambahan data gagal, mohon kontak admin", "da");
                 }
             }
         } else {
-            redirect_page("Kode admin harus diisi");
+            redirect_page("Kode admin harus diisi", "da");
         }
     } else {
-        redirect_page("Ukuran gambar melebihi 2MB, mohon kecilkan ukuran gambar");
+        redirect_page("Ukuran gambar melebihi 2MB, mohon kecilkan ukuran gambar", "da");
     }
 }
 
@@ -100,12 +92,12 @@ function hapus_data()
         $id_user = $_POST['id_user'];
         $delete_user = mysqli_query($conn, "DELETE FROM tb_user WHERE id_user = '$id_user'");
         if ($delete_user) {
-            redirect_page("Penghapusan data berhasil");
+            redirect_page("Penghapusan data berhasil", "da");
         } else {
-            redirect_page("Proses penghapusan gagal, mohon kontak admin");
+            redirect_page("Proses penghapusan gagal, mohon kontak admin", "da");
         }
     } else {
-        redirect_page("Proses penghapusan gagal, mohon kontak admin");
+        redirect_page("Proses penghapusan gagal, mohon kontak admin", "da");
     }
 }
 
@@ -156,8 +148,8 @@ function edit_data()
         if ($gambar_tidak_update == false) {
             move_uploaded_file($file_tmp, '../../images/admin/' . $nama_gambar);
         }
-        redirect_page("Data berhasil diedit");
+        redirect_page("Data berhasil diedit", "da");
     } else {
-        redirect_page("Data gagal diedit, mohon kontak admin");
+        redirect_page("Data gagal diedit, mohon kontak admin", "da");
     }
 }

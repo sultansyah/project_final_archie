@@ -1,5 +1,6 @@
 <?php
 require "../../koneksi.php";
+require "../../func.php";
 
 if (isset($_POST['tambah'])) {
     tambah_data();
@@ -8,14 +9,7 @@ if (isset($_POST['tambah'])) {
 } elseif (isset($_POST['hapus'])) {
     hapus_data();
 } else {
-    redirect_page("Mohon masuk ke halaman data dosen terlebih dahulu");
-}
-
-//function untuk menampilkan alert dan mendirect ke halaman data dosen
-function redirect_page($message)
-{
-    echo '<script>alert("' . $message . '");</script>';
-    echo '<script>window.location="../dd";</script>';
+    redirect_page("Mohon masuk ke halaman data dosen terlebih dahulu", "dd");
 }
 
 function tambah_data()
@@ -35,7 +29,7 @@ function tambah_data()
             $hasil_dosen2 = mysqli_fetch_array($cek_dosen2);
 
             if (isset($hasil_dosen['nip']) and isset($hasil_dosen2['username']) and $hasil_dosen['nip'] == $nip and $hasil_dosen2['username'] == $username_dosen) {
-                redirect_page("Data kode dosen yang anda masukkan sudah ada");
+                redirect_page("Data kode dosen yang anda masukkan sudah ada", "dd");
             } else {
                 $add_user = mysqli_query($conn, "INSERT INTO tb_user (username, password, level) VALUES ('$username_dosen', '$password_dosen', '$level')");
 
@@ -79,24 +73,24 @@ function tambah_data()
                             if ($gambar_ada == true) {
                                 move_uploaded_file($file_tmp, '../../images/dosen/' . $nama_gambar);
                             }
-                            redirect_page("Penambahan data berhasil");
+                            redirect_page("Penambahan data berhasil", "dd");
                         } else {
                             echo 1;
-                            redirect_page("Penambahan data gagal, mohon kontak dosen");
+                            redirect_page("Penambahan data gagal, mohon kontak dosen", "dd");
                         }
                     } else {
-                        redirect_page("Username user tidak ditemukan, mohon kontak dosen");
+                        redirect_page("Username user tidak ditemukan, mohon kontak dosen", "dd");
                     }
                 } else {
                     echo 2;
-                    redirect_page("Penambahan data gagal, mohon kontak dosen");
+                    redirect_page("Penambahan data gagal, mohon kontak dosen", "dd");
                 }
             }
         } else {
-            redirect_page("NIP harus diisi");
+            redirect_page("NIP harus diisi", "dd");
         }
     } else {
-        redirect_page("Ukuran gambar melebihi 2MB, mohon kecilkan ukuran gambar");
+        redirect_page("Ukuran gambar melebihi 2MB, mohon kecilkan ukuran gambar", "dd");
     }
 }
 
@@ -110,12 +104,12 @@ function hapus_data()
         $id_user = $_POST['id_user'];
         $delete_user = mysqli_query($conn, "DELETE FROM tb_user WHERE id_user = '$id_user'");
         if ($delete_user) {
-            redirect_page("Penghapusan data berhasil");
+            redirect_page("Penghapusan data berhasil", "dd");
         } else {
-            redirect_page("Proses penghapusan gagal, mohon kontak dosen");
+            redirect_page("Proses penghapusan gagal, mohon kontak dosen", "dd");
         }
     } else {
-        redirect_page("Proses penghapusan gagal, mohon kontak dosen");
+        redirect_page("Proses penghapusan gagal, mohon kontak dosen", "dd");
     }
 }
 
@@ -167,8 +161,8 @@ function edit_data()
         if ($gambar_tidak_update == false) {
             move_uploaded_file($file_tmp, '../../images/dosen/' . $nama_gambar);
         }
-        redirect_page("Data berhasil diedit");
+        redirect_page("Data berhasil diedit", "dd");
     } else {
-        redirect_page("Data gagal diedit, mohon kontak dosen");
+        redirect_page("Data gagal diedit, mohon kontak dosen", "dd");
     }
 }
