@@ -22,6 +22,6 @@ if ($query) {
         }
     } else {
         echo '<script>alert("Mohon maaf username atau password yang anda masukkan salah");</script>';
-        // echo '<script>window.location="../sign-in";</script>';
+        echo '<script>window.location="../sign-in";</script>';
     }
 }

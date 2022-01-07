@@ -1,9 +1,14 @@
 <?php
-// if (!empty($_SESSION['username'])) {
-//     if ($_SESSION['level'] == 'admin') {
-//         echo '<script>window.location="../admin";</script>';
-//     }
-// }
+session_start();
+if (isset($_SESSION['username'])) {
+    if ($_SESSION['level'] == 'admin') {
+        echo '<script>window.location="../user/admin/";</script>';
+    } else if ($_SESSION['level'] == 'dosen') {
+        echo '<script>window.location="../user/dosen/";</script>';
+    } else if ($_SESSION['level'] == 'mahasiswa') {
+        echo '<script>window.location="../user/mahasiswa/";</script>';
+    }
+}
 ?>
 
 <!doctype html>

@@ -243,7 +243,7 @@
                                                                     </div>
                                                                     <div class="col">
                                                                         <div class="form-floating mb-2">
-                                                                            <input type="number" class="form-control"
+                                                                            <input type="text" class="form-control"
                                                                                 name="tempat_lahir"
                                                                                 id="floatingPassword"
                                                                                 value="<?= $hasil_mahasiswa['tempat_lahir'] ?>">

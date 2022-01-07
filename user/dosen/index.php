@@ -1,6 +1,7 @@
 <?php
 require "proses/cekLevel.php";
 require "../session.php";
+require "../koneksi.php";
 
 if (empty($_GET['view'])) {
     $_GET['view'] = 'hm';
@@ -30,6 +31,9 @@ if (empty($_GET['view'])) {
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="../../vendor/datatables/dataTables.bootstrap4.min.css" />
 
 </head>
 
@@ -101,6 +105,12 @@ if (empty($_GET['view'])) {
             <!-- End of Main Content -->
 
             <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>
@@ -142,6 +152,14 @@ if (empty($_GET['view'])) {
     <!-- Custom scripts for all pages-->
     <script src="../../js/sb-admin-2.min.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Page level plugins -->
+    <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../../js/demo/datatables-demo.js"></script>
 
 </body>
 
