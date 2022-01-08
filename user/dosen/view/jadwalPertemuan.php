@@ -302,7 +302,7 @@
                                                     Tolak
                                                 </button>
 
-                                                <!-- Modal Link-->
+                                                <!-- Modal Tolak-->
                                                 <div class="modal fade" id="ModalTolak<?= $hasil_jwp['id_jadwal'] ?>"
                                                     tabindex="-1" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
