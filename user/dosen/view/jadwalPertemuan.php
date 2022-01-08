@@ -349,8 +349,8 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Masuk Ke
-                                                                    Pertemuan</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Pertemuan
+                                                                </h5>
                                                                 <button type="button" class="btn-close"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
@@ -360,6 +360,12 @@
                                                                     <input type="hidden"
                                                                         value="<?= $hasil_jwp['id_jadwal'] ?>"
                                                                         name="id_jadwal">
+                                                                    <?php if ($hasil_jwp['link_meet'] != "") { ?>
+                                                                    <p>Zoom sudah dibuat</p>
+                                                                    <input type="hidden" name="ada/belum" value="ada">
+                                                                    <?php $value = "Masuk Ke Pertemuan"; ?>
+                                                                    <?php } elseif ($hasil_jwp['link_meet'] == "") { ?>
+                                                                    <input type="hidden" name="ada/belum" value="belum">
                                                                     <input type="hidden" name="judul"
                                                                         value="<?= $hasil_jwp['judul'] ?>">
                                                                     <input type="hidden" name="tanggal_jam"
@@ -371,13 +377,14 @@
                                                                         <label for="durasi">Durasi Meeting Zoom 1-60
                                                                             menit</label>
                                                                     </div>
-                                                                    Tekan Pergi untuk memasuki pertemuan
+                                                                    <?php $value = "Buat Pertemuan"; ?>
+                                                                    <?php } ?>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
                                                                     <button type="submit" class="btn btn-danger"
-                                                                        name="link">Masuk Ke Pertemuan</button>
+                                                                        name="link"><?= $value ?></button>
                                                                 </div>
                                                             </form>
                                                         </div>
