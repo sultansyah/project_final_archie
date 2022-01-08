@@ -26,7 +26,7 @@ function tambah_data()
         $id_user_pembuat = $_POST['id_user_pembuat'];
         $level_pembuat = $_POST['level_pembuat'];
 
-        $tambah = mysqli_query($conn, "INSERT INTO tb_jadwal_pertemuan(judul, keterangan, kategori, tanggal_jam, id_user_pembuat, level_pembuat)  VALUES ('$judul','$keterangan','$kategori',  " . ($tanggal_jam == NULL ? "NULL" : "'$tanggal_jam'") . ",'$id_user_pembuat', '$level_pembuat')");
+        $tambah = mysqli_query($conn, "INSERT INTO tb_jadwal_pertemuan(judul, keterangan, mahasiswa, kategori, tanggal_jam, id_user_pembuat, level_pembuat)  VALUES ('$judul','$keterangan', '0', '$kategori',  " . ($tanggal_jam == NULL ? "NULL" : "'$tanggal_jam'") . ",'$id_user_pembuat', '$level_pembuat')");
 
         if ($tambah) {
             redirect_page("Tambah jadwal berhasil", "djp");

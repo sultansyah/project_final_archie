@@ -35,9 +35,7 @@
                         </div>
                         <select class="form-select mb-3" aria-label="Default select example" id="kategori"
                             name="kategori">
-                            <option value="Belum diatur">Kategori</option>
-                            <option value="Bimbingan">Bimbingan</option>
-                            <option value="Konsultasi">Konsultasi</option>
+                            <option value="Belum diatur">Pilih Kategori</option>
                             <option value="Lainnya">Lainnya</option>
                         </select>
                         <div class="form-floating mb-3">
@@ -87,14 +85,18 @@
                                     <td><?= $hasil_jwp['judul'] ?></td>
                                     <td><?= $hasil_jwp['keterangan'] ?></td>
                                     <td><?= $hasil_jwp['kategori'] ?></td>
-                                    <td><?= date("d-m-Y H:i:s", strtotime($hasil_jwp['tanggal_jam'])) ?>
-                                        <?php
-                                            $tabel_pembuat = 'tb_' . $hasil_jwp['level_pembuat'];
-                                            $select_pembuat = mysqli_query($conn, "SELECT * FROM $tabel_pembuat WHERE id_user = '$hasil_jwp[id_user_pembuat]'");
-                                            $hasil_pembuat = mysqli_fetch_array($select_pembuat);
-                                            ?>
+                                    <td><?= date("d-m-Y H:i:s", strtotime($hasil_jwp['tanggal_jam'])) ?></td>
                                     <td>
-                                        <?= $hasil_pembuat['nama_' . $hasil_jwp['level_pembuat']] . ' - ' . $hasil_jwp['level_pembuat'] ?>
+                                        <?php
+                                            if (isset($hasil_jwp['nama_pembuat'])) {
+                                                $tabel_pembuat = 'tb_' . $hasil_jwp['level_pembuat'];
+                                                $select_pembuat = mysqli_query($conn, "SELECT * FROM $tabel_pembuat WHERE id_user = '$hasil_jwp[id_user_pembuat]'");
+                                                $hasil_pembuat = mysqli_fetch_array($select_pembuat);
+                                                echo $hasil_pembuat['nama_' . $hasil_jwp['level_pembuat']] . ' - ' . $hasil_jwp['level_pembuat'];
+                                            } else {
+                                                echo "-";
+                                            }
+                                            ?>
                                     </td>
                                     <td>
                                         <?php if (isset($hasil_jwp['id_user_pengedit'])) {
@@ -152,8 +154,6 @@
                                                                     <option value="<?= $hasil_jwp['kategori'] ?>">
                                                                         <?= $hasil_jwp['kategori'] ?>
                                                                     </option>
-                                                                    <option value="Bimbingan">Bimbingan</option>
-                                                                    <option value="Konsultasi">Konsultasi</option>
                                                                     <option value="Lainnya">Lainnya</option>
                                                                 </select>
                                                                 <div class="form-floating mb-3">
