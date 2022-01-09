@@ -14,6 +14,10 @@ class ComposerStaticInite594a3f6697cc5770da4960bfebb3530
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Spatie\\PdfToImage\\' => 18,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
@@ -32,6 +36,10 @@ class ComposerStaticInite594a3f6697cc5770da4960bfebb3530
     );
 
     public static $prefixDirsPsr4 = array (
+        'Spatie\\PdfToImage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/pdf-to-image/src',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',

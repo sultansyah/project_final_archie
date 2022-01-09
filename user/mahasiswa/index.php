@@ -1,6 +1,8 @@
 <?php
 require "proses/cekLevel.php";
 require "../session.php";
+require "../koneksi.php";
+require "proses/data.php";
 
 if (empty($_GET['view'])) {
     $_GET['view'] = 'hm';
@@ -30,6 +32,9 @@ if (empty($_GET['view'])) {
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="../../vendor/datatables/dataTables.bootstrap4.min.css" />
 
 </head>
 
@@ -97,7 +102,12 @@ if (empty($_GET['view'])) {
             <!-- End of Main Content -->
 
             <!-- Footer -->
-
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>
@@ -118,10 +128,11 @@ if (empty($_GET['view'])) {
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Tekan Logout untuk keluar dari website</div>
+                <div class="modal-body">Select "Logout" below if you are
+                    ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="../logout.php">Logout</a>
+                    <a class="btn btn-primary" href="../logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -138,6 +149,14 @@ if (empty($_GET['view'])) {
     <!-- Custom scripts for all pages-->
     <script src="../../js/sb-admin-2.min.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Page level plugins -->
+    <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../../js/demo/datatables-demo.js"></script>
 
 </body>
 

@@ -2,6 +2,7 @@
 require "proses/cekLevel.php";
 require "../session.php";
 require "../koneksi.php";
+require "proses/data.php";
 
 if (empty($_GET['view'])) {
     $_GET['view'] = 'hm';

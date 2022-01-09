@@ -39,7 +39,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="kelas" id="floatingPassword">
+                                    <input type="text" class="form-control" name="kelas" id="floatingPassword"
+                                        maxlength="2">
                                     <label for="floatingPassword">Kelas</label>
                                 </div>
                             </div>

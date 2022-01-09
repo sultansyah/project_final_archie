@@ -20,9 +20,9 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Nama</th>
+                                    <th scope="col">NIM</th>
                                     <th scope="col">Prodi</th>
                                     <th scope="col">Kelas</th>
-                                    <th scope="col">HP</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -41,9 +41,9 @@
                                             width="100" height="100" class="card-img-top" alt="...">
                                     </td>
                                     <td><?= $hasil_mahasiswa['nama_mahasiswa'] ?></td>
+                                    <td><?= $hasil_mahasiswa['nim'] ?></td>
                                     <td><?= $hasil_mahasiswa['prodi'] ?></td>
                                     <td><?= $hasil_mahasiswa['kelas'] ?></td>
-                                    <td><?= $hasil_mahasiswa['no_hp'] ?></td>
                                     <td>
                                     <td>
                                         <?php

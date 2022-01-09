@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'dc33ad455b09ac98967c13fc9fddcd47f0b9f357',
+        'reference' => '6a3e9ef7754752cdfc12163201a05a34d5f00faa',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'dc33ad455b09ac98967c13fc9fddcd47f0b9f357',
+            'reference' => '6a3e9ef7754752cdfc12163201a05a34d5f00faa',
             'dev_requirement' => false,
         ),
         'firebase/php-jwt' => array(
@@ -107,6 +107,15 @@
             'install_path' => __DIR__ . '/../ralouphie/getallheaders',
             'aliases' => array(),
             'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+            'dev_requirement' => false,
+        ),
+        'spatie/pdf-to-image' => array(
+            'pretty_version' => '1.2.2',
+            'version' => '1.2.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/pdf-to-image',
+            'aliases' => array(),
+            'reference' => '9a5cb264a99e87e010c65d4ece03b51f821d55bd',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(
