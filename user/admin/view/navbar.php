@@ -208,8 +208,7 @@
     <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2"
-                style="color: black; font-size: 18px; font-weight: bold;"><?= $hasil_data['nama_admin'] ?></span>
+            <span class="mr-2" style="color: black; font-size: 18px; font-weight: bold;"><?= $_SESSION['nama'] ?></span>
             <img class="img-profile rounded-circle" src="<?= $gambar; ?>">
         </a>
         <!-- Dropdown - User Information -->
