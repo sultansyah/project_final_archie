@@ -154,8 +154,13 @@
                                 $no = 0;
                                 while ($hasil_mahasiswa = mysqli_fetch_array($select_mahasiswa)) {
                                     $no++;
-                                    $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen WHERE nip = '$hasil_mahasiswa[dosen_pembimbing]'");
-                                    $hasil_dosen = mysqli_fetch_array($select_dosen);
+                                    if (isset($hasil_mahasiswa['dosen_pembimbing'])) {
+                                        $select_dosen = mysqli_query($conn, "SELECT * FROM tb_dosen WHERE nip = '$hasil_mahasiswa[dosen_pembimbing]'");
+                                        $hasil_dosen = mysqli_fetch_array($select_dosen);
+                                        $dosen_pembimbing = $hasil_dosen['nama_dosen'];
+                                    } else {
+                                        $dosen_pembimbing = "-";
+                                    }
                                 ?>
                                 <tr>
                                     <th><?= $no; ?></th>
@@ -167,7 +172,7 @@
                                     <td><?= $hasil_mahasiswa['nim'] ?></td>
                                     <td><?= $hasil_mahasiswa['jurusan'] ?></td>
                                     <td><?= $hasil_mahasiswa['prodi'] ?></td>
-                                    <td><?= $hasil_dosen['nama_dosen'] ?></td>
+                                    <td><?= $dosen_pembimbing ?></td>
                                     <td><?= $hasil_mahasiswa['no_hp'] ?></td>
                                     <td><?= $hasil_mahasiswa['kelas'] ?></td>
                                     <td>
