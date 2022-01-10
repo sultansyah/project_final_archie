@@ -128,15 +128,45 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Tekan Minta untuk menyuruh dosen menandatangani
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" name="edit"
-                                                                class="btn btn-danger">Edit</button>
-                                                        </div>
+                                                        <form action="proses/prosesKRS.php" method="POST"
+                                                            enctype="multipart/form-data">
+                                                            <div class="modal-body">
+                                                                <input type="hidden" name="nim"
+                                                                    value="<?= $hasil_data['nim'] ?>">
+                                                                <div class="form-floating mb-3">
+                                                                    <input type="text" class="form-control"
+                                                                        name="dosen_pembimbing"
+                                                                        value="<?= $hasil_data['dosen_pembimbing'] ?>"
+                                                                        id="floatingInput" readonly>
+                                                                    <label for="floatingInput">Dosen Pemimbing</label>
+                                                                </div>
+                                                                <div class="form-floating mb-3">
+                                                                    <input type="text" class="form-control"
+                                                                        name="semester" id="floatingInput"
+                                                                        value="<?= $hasil_krs['semester'] ?>">
+                                                                    <label for="floatingInput">Semester Contoh Format:
+                                                                        2021/2022 Ganjil</label>
+                                                                </div>
+                                                                <div class="form-floating mb-3">
+                                                                    <input type="text" class="form-control" name="kelas"
+                                                                        id="floatingInput" maxlength="2"
+                                                                        value="<?= $hasil_krs['kelas'] ?>">
+                                                                    <label for="floatingInput">Kelas</label>
+                                                                </div>
+                                                                <div class="input-group mb-2">
+                                                                    <input type="file" class="form-control"
+                                                                        id="inputGroupFile02" name="berkas_krs">
+                                                                    <label class="input-group-text"
+                                                                        for="inputGroupFile02">Berkas KRS</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" name="edit"
+                                                                    class="btn btn-danger">Edit</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
