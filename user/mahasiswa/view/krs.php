@@ -96,13 +96,10 @@
                                     <td>
                                         <?php
                                             $bdetail = "";
-                                            $bprint = "";
                                             $btanda = "";
-
-                                            if ($hasil_krs['status'] == 1) $bprint = "hidden";
+                                            $bedit = "";
 
                                             if ($hasil_krs['status'] == 2) {
-                                                $bprint = "";
                                                 $bdetail = "";
                                                 $btanda = "hidden";
                                             }
@@ -111,14 +108,14 @@
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
                                             <!-- Button trigger modal edit -->
-                                            <button <?= $btanda ?> type="button" class="btn btn-success mr-2"
+                                            <button <?= $bedit ?> type="button" class="btn btn-success mr-2"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#ModalMinta<?= $hasil_krs['id_krs'] ?>">
+                                                data-bs-target="#ModalEdit<?= $hasil_krs['id_krs'] ?>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
 
                                             <!-- Modal Minta Edit-->
-                                            <div class="modal fade" id="ModalMinta<?= $hasil_krs['id_krs'] ?>"
+                                            <div class="modal fade" id="ModalEdit<?= $hasil_krs['id_krs'] ?>"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -131,8 +128,8 @@
                                                         <form action="proses/prosesKRS.php" method="POST"
                                                             enctype="multipart/form-data">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="nim"
-                                                                    value="<?= $hasil_data['nim'] ?>">
+                                                                <input type="hidden" name="id_krs"
+                                                                    value="<?= $hasil_krs['id_krs'] ?>">
                                                                 <div class="form-floating mb-3">
                                                                     <input type="text" class="form-control"
                                                                         name="dosen_pembimbing"
@@ -202,37 +199,6 @@
                                             </div> -->
                                             <!-- Akhir Modal Detail -->
 
-                                            <!-- Button trigger modal print -->
-                                            <button <?= $bprint ?> type="button" class="btn btn-danger"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#ModalPrint<?= $hasil_krs['id_krs'] ?>">
-                                                <i class="fas fa-print"></i>
-                                            </button>
-
-                                            <!-- Modal Print-->
-                                            <div class="modal fade" id="ModalPrint<?= $hasil_krs['id_krs'] ?>"
-                                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Print</h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" name="print"
-                                                                class="btn btn-danger">Print</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Akhir Modal Print -->
-
                                             <!-- Button trigger modal tanda tangan -->
                                             <button <?= $btanda ?> type="button" class="btn btn-danger"
                                                 data-bs-toggle="modal"
@@ -253,7 +219,8 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Tekan Minta untuk menyuruh dosen menandatangani
+                                                            Belum bisa
+                                                            <!-- Tekan Minta untuk menyuruh dosen menandatangani -->
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"

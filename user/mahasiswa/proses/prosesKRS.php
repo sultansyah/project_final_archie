@@ -6,7 +6,7 @@ if (isset($_POST['tambah'])) {
     tambah_data();
 } elseif (isset($_POST['print'])) {
     print_krs();
-} elseif (isset($_GET['edit'])) {
+} elseif (isset($_POST['edit'])) {
     edit_data();
 } else {
     redirect_page("Mohon masuk ke halaman data jadwal pertemuan terlebih dahulu", "krs");
@@ -66,13 +66,13 @@ function tambah_data()
 function edit_data()
 {
     global $conn;
-    $nim = $_POST['nim'];
     $semester = $_POST['semester'];
     $kelas = $_POST['kelas'];
     $dosen_pembimbing = $_POST['dosen_pembimbing'];
+    $id_krs = $_POST['id_krs'];
 
     //ambil file krs
-    if (isset($_FILES['berkas_krs']['name'])) {
+    if ($_FILES['berkas_krs']['name'] != "") {
         $nama_berkas_tmp = $_FILES['berkas_krs']['name'];
         $berkas_type = $_FILES['berkas_krs']['type'];
         if ($berkas_type == "application/pdf") {
@@ -96,7 +96,7 @@ function edit_data()
 
         move_uploaded_file($berkas_tmp, '../../krs/' . $nama_berkas);
     } else {
-        $select_berkas = mysqli_query($conn, "SELECT * FROM tb_krs WHERE nim_mahasiswa = '$nim'");
+        $select_berkas = mysqli_query($conn, "SELECT * FROM tb_krs WHERE id_krs = '$id_krs'");
         $hasil_berkas = mysqli_fetch_array($select_berkas);
         $nama_berkas = $hasil_berkas['berkas_krs'];
     }
@@ -104,7 +104,7 @@ function edit_data()
     $tambah = mysqli_query(
         $conn,
         "UPDATE tb_krs SET dosen_pembimbing='$dosen_pembimbing',
-        semester='$semester',kelas='$kelas',berkas_krs='$nama_berkas' WHERE nim_mahasiswa='$nim'"
+        semester='$semester',kelas='$kelas',berkas_krs='$nama_berkas' WHERE id_krs='$id_krs'"
     );
 
     if ($tambah) {
